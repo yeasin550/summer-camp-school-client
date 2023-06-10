@@ -32,6 +32,7 @@ const AddNewClass = () => {
       .then((res) => res.json())
       .then((imgResponse) => {
         // console.log(imgResponse)
+        // console.log(imgResponse)
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
           const { name, price, instructorName, instructorEmail } = data;
