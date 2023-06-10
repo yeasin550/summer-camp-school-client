@@ -1,4 +1,6 @@
 import Banner from "../Banner/Banner";
+import MartialArt from "../MartialArt/MartialArt";
+
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 
@@ -9,7 +11,9 @@ const Home = () => {
             <Banner></Banner>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
-            home page
+            <MartialArt></MartialArt>
+          
+            
         </div>
     );
 };

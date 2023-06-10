@@ -2,7 +2,7 @@
 const Banner = () => {
   return (
     <div>
-      <div className="carousel mx-20 h-[550px]">
+      <div className="carousel md:mx-20 h-[550px]">
         <div id="item1" className="carousel-item  w-full">
           <img
             src="https://img.freepik.com/free-photo/kids-fashion-concept-group-teen-boys-girls-sitting-green-grass-park_155003-32286.jpg?w=740&t=st=1686136639~exp=1686137239~hmac=aa36b211509a14b695049ef6d327defd1830b67971fb7d630b0a6932e465432b"

@@ -1,9 +1,16 @@
 import { useContext, useState } from "react";
+import { FaMoon } from "react-icons/fa";
+// import React, { useState } from "react";
+// import DayNightToggle from "react-day-and-night-toggle";
 
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 // import logo from "../../assets/logo.png";
 const Navbar = () => {
+  // dark mode
+//  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,14 +27,22 @@ const Navbar = () => {
 
   return (
     <nav className="bg-green-200 font-bold">
+      {/* <DayNightToggle
+        onChange={() => setIsDarkMode(!isDarkMode)}
+        checked={isDarkMode}
+      /> */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              {/* <img className="w-40 h-24" src={logo} alt="" /> */}
-              <h1>logo</h1>
+              <img
+                className="w-24 h-24"
+                src="https://i.ibb.co/PWkVHyy/2411-removebg-preview.png"
+                alt=""
+              />
+              {/* <h1>Martial Art</h1> */}
             </div>
-            <div className="hidden md:block lg:ml-24">
+            <div className="hidden md:block lg:ml-16">
               <div className="ml-10 flex items-baseline space-x-4 ">
                 <ul className="menu menu-horizontal px-1">
                   <li>
@@ -62,7 +77,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/dashboard "
+                      to="/dashboard/addNewClass"
                       className={({ isActive }) =>
                         isActive ? "text-blue-600" : "default"
                       }
@@ -74,8 +89,8 @@ const Navbar = () => {
               </div>
             </div>
             {/* logout and profile */}
-            <div className="flex items-center lg:ml-72 mb-3">
-              <div className="lg:ml-48">
+            <div className=" flex items-center lg:ml-64 mb-3">
+              <div className=" lg:ml-48">
                 {user ? (
                   <Link to="/login">
                     <button
@@ -103,6 +118,10 @@ const Navbar = () => {
                     />
                   </div>
                 )}
+              </div>
+
+              <div className="mt-4 cursor-pointer">
+                <FaMoon></FaMoon>
               </div>
             </div>
           </div>

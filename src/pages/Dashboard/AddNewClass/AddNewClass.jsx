@@ -1,55 +1,30 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const AddNewCard = () => {
-  const [className, setClassName] = useState("");
-  const [classImage, setClassImage] = useState("");
-  const [instructorName, setInstructorName] = useState("");
-  const [instructorEmail, setInstructorEmail] = useState("");
-  const [availableSeats, setAvailableSeats] = useState("");
-  const [price, setPrice] = useState("");
-
-  const handleClassNameChange = (e) => {
-    setClassName(e.target.value);
-  };
-
-  const handleClassImageChange = (e) => {
-    setClassImage(e.target.value);
-  };
-
-  // You can populate the instructor name and email using the logged in user's data
-  const instructorDisplayName = "John Doe"; // Replace with the actual display name
-  const instructorEmailAddress = "john.doe@example.com"; // Replace with the actual email
-
+  const { user } = useContext(AuthContext)
+  console.log(user)
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target.value;
+    const name = form.name.value;
+    const class_email = form.class_email.value;
+    const instructor_name = form.instructor_name.value;
+    const instructor_image = form.instructor_image.value;
+    
 
-    // Create a new class object with the form data
-    const newClass = {
-      className,
-      classImage,
-      instructorName: instructorDisplayName,
-      instructorEmail: instructorEmailAddress,
-      availableSeats,
-      price,
-      status: "pending",
-    };
 
-    // Here you can perform any necessary database operations to save the new class
+console.log(name, class_email, instructor_name, instructor_image);
+ 
 
-    // Clear the form inputs
-    setClassName("");
-    setClassImage("");
-    setAvailableSeats("");
-    setPrice("");
-
-    // Optionally, you can show a success message or redirect to another page
   };
 
   return (
-      <div>
-          <h1 className="text-center font-bold text-4xl my-12">Add New Card</h1>
-      <form className="w-full max-w-sm mx-auto" onSubmit={handleSubmit}>
+    <div className="w-2/3 ml-10">
+      <h1 className="text-center font-bold text-4xl my-12">Add New Card</h1>
+      <form className="w-full  mx-auto" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -60,10 +35,9 @@ const AddNewCard = () => {
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="class-name"
+            name="name"
             type="text"
             placeholder="Enter class name"
-            value={className}
-            onChange={handleClassNameChange}
             required
           />
         </div>
@@ -78,24 +52,21 @@ const AddNewCard = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="class-image"
             type="file"
+            name="class_image"
             placeholder="Enter class image URL"
-            value={classImage}
-            onChange={handleClassImageChange}
             required
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="instructor-name"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Instructor Name
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-gray-100"
             id="instructor-name"
             type="text"
-            value={instructorDisplayName}
+            name="instructor-name"
+            value={user?.name}
             readOnly
           />
         </div>
@@ -110,7 +81,8 @@ const AddNewCard = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-gray-100"
             id="instructor-email"
             type="email"
-            value={instructorEmailAddress}
+            name="instructor_email"
+            value={user?.email}
             readOnly
           />
         </div>
@@ -125,9 +97,8 @@ const AddNewCard = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="available-seats"
             type="number"
+            name="available_seats"
             placeholder="Enter available seats"
-            value={availableSeats}
-            onChange={(e) => setAvailableSeats(e.target.value)}
             required
           />
         </div>
@@ -142,10 +113,9 @@ const AddNewCard = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="price"
             type="number"
+            name="price"
             step="0.01"
             placeholder="Enter price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
             required
           />
         </div>

@@ -23,7 +23,21 @@ const Register = () => {
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser)
-        Swal.fire("Good job!", "Register successfully", "success");
+        const saveUser = { name: data.name, email: data.email}
+        fetch(`/http://localhost:5000/users`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(saveUser)
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire("Good job!", "Register successfully", "success");
+            }
+          });
+        
       })
     
 
@@ -31,7 +45,7 @@ const Register = () => {
 
   };
 
-  const password = watch("password"); // Get the value of the password field
+  const password = watch("password"); 
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -53,7 +67,9 @@ const Register = () => {
               </label>
               <div className="mt-1">
                 <input
-                  {...register("name", { required: true })}
+                  {...register("name", {
+                    required: true
+                  })}
                   id="name"
                   name="name"
                   type="text"
@@ -62,7 +78,7 @@ const Register = () => {
                 />
                 {errors.name && (
                   <p className="text-red-500 text-xs mt-1">
-                    Please enter your name.
+                    Please enter a valid email address.
                   </p>
                 )}
               </div>
