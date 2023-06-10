@@ -1,18 +1,18 @@
 
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
-import { FaGoogle } from "react-icons/fa";
+// import { FaGoogle } from "react-icons/fa";
+import SocialLogin from "../../pages/Shared/SocialLogin/SocialLogin";
 
 
 const Register = () => {
-  const { createUser, updateUserProfile, googleSignIn } =
-    useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
      const navigate = useNavigate();
-     const location = useLocation();
-     const from = location.state?.from?.pathname || "/";
+    //  const location = useLocation();
+    //  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -22,44 +22,44 @@ const Register = () => {
     reset,
   } = useForm();
 
-const handleGoogleSignIn = () => {
-  googleSignIn()
-    .then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      const saveUser = {
-        name: loggedUser.displayName,
-        email: loggedUser.email,
-        role: "Student",
-        // profile: data.photoURL,
-      };
-      // updateUserProfile(data.name, data.photoURL)
-       fetch("http://localhost:5000/users", {
-         method: "POST",
-         headers: {
-           "content-type": "application/json",
-         },
-         body: JSON.stringify(saveUser),
-       })
-         .then((res) => res.json())
-         .then((data) => {
-           if (data.insertedId) {
-             reset();
-             Swal.fire("Good job!", "Login successfully", "success");
+// const handleGoogleSignIn = () => {
+//   googleSignIn()
+//     .then((result) => {
+//       const loggedUser = result.user;
+//       console.log(loggedUser);
+//       const saveUser = {
+//         name: loggedUser.displayName,
+//         email: loggedUser.email,
+//         role: "student",
+//         profile: loggedUser.photoURL,
+//       };
+//       updateUserProfile(loggedUser.name, loggedUser.photoURL);
+//        fetch("http://localhost:5000/users", {
+//          method: "POST",
+//          headers: {
+//            "content-type": "application/json",
+//          },
+//          body: JSON.stringify(saveUser),
+//        })
+//          .then((res) => res.json())
+//          .then((data) => {
+//            if (data.insertedId) {
+//              reset();
+//              Swal.fire("Good job!", "Login successfully", "success");
      
-              navigate(from, { replace: true });
-           }
-         });
+//               navigate(from, { replace: true });
+//            }
+//          });
 
 
 
-      // Swal.fire("Good job!", "Login successfully", "success");
+//       // Swal.fire("Good job!", "Login successfully", "success");
      
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
 
 
 const onSubmit = (data) => {
@@ -72,7 +72,7 @@ const onSubmit = (data) => {
         const saveUser = {
           name: data.name,
           email: data.email,
-          role: "Student",
+          role: "student",
           profile: data.photoURL,
         };
         fetch("https://summer-camp-school-server-khaki.vercel.app/users", {
@@ -319,16 +319,7 @@ const onSubmit = (data) => {
                 </button>
               </div>
             </div>
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">Or log in with:</p>
-              <div
-                onClick={handleGoogleSignIn}
-                className="flex justify-center mt-2 cursor-pointer"
-              >
-                {/* Social login icons */}
-                <FaGoogle></FaGoogle>
-              </div>
-            </div>
+           <SocialLogin></SocialLogin>
           </form>
         </div>
       </div>
