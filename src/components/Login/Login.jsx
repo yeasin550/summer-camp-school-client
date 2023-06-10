@@ -201,7 +201,7 @@ const handleGoogleSignIn = () => {
             <p className="text-sm text-gray-600">Or log in with:</p>
             <div
               onClick={handleGoogleSignIn}
-              className="flex justify-center mt-2"
+              className="flex justify-center mt-2 cursor-pointer"
             >
               {/* Social login icons */}
               <FaGoogle></FaGoogle>

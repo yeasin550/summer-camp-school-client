@@ -4,28 +4,25 @@ const ManageUsers = () => {
     const [users, setUsers] = useState([])
     console.log(users)
     useEffect(() => {
-        fetch("http://localhost:5000/users")
-        .then(res => res.json())
-        .then(data => {
-            setUsers(data)
-        })
+        fetch("https://summer-camp-school-server-khaki.vercel.app/users")
+          .then((res) => res.json())
+          .then((data) => {
+            setUsers(data);
+          });
     }, [])
     return (
-      <div>
+      <div className="text-lg">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
+                <th># </th>
+                <th>User Image</th>
+                <th>User Name</th>
+                <th>User Name</th>
+                <th>Role</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -48,10 +45,12 @@ const ManageUsers = () => {
                       
                     </div>
                   </td>
-                      <td>{ user.name}</td>
-                  <td>Purple</td>
+                  <td>{ user.name}</td>
+                  <td>{ user.email}</td>
+                  <td>{ user.role}</td>
                   <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
+                    <button className="btn btn-ghost btn-xs">Admin</button>
+                    <button className="btn btn-ghost btn-xs">Instructor</button>
                   </th>
                 </tr>
               ))}

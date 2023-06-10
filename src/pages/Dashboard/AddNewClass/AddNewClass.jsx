@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
-const AddNewCard = () => {
+const AddNewClass = () => {
   const { user } = useContext(AuthContext)
   console.log(user)
  
@@ -132,4 +132,4 @@ console.log(name, class_email, instructor_name, instructor_image);
   );
 };
 
-export default AddNewCard;
+export default AddNewClass;
