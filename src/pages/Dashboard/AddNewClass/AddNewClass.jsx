@@ -1,126 +1,152 @@
-import  { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { FaUtensils } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const AddNewClass = () => {
-  const [className, setClassName] = useState("");
-  const [classImage, setClassImage] = useState("");
-  const [instructorName, setInstructorName] = useState("");
-  const [instructorEmail, setInstructorEmail] = useState("");
-  const [availableSeats, setAvailableSeats] = useState(0);
-  const [price, setPrice] = useState(0);
+  const {user} = useContext(AuthContext)
+  const [axiosSecure] = useAxiosSecure();
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    //  formState: { errors },
+  } = useForm();
 
-    // Assuming you have a database API to send the form data
-    // You can replace the code inside this function with your actual API call
-    // Here's an example using fetch:
-    fetch("/api/classes", {
+  const onSubmit = (data) => {
+    console.log(data);
+
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+    fetch(img_hosting_url, {
       method: "POST",
-      body: JSON.stringify({
-        className,
-        classImage,
-        instructorName,
-        instructorEmail,
-        availableSeats,
-        price,
-        status: "pending",
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: formData,
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from the API if needed
-        console.log(data);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        // console.log(imgResponse)
+        if (imgResponse.success) {
+          const imgURL = imgResponse.data.display_url;
+          const { name, price, instructorName, instructorEmail } = data;
+          const newClass = {
+            name,
+            price: parseFloat(price),
+            instructorName,
+            instructorEmail,
+            image: imgURL,
+          };
+
+          // axiosSecure.post("/menu", newItem).then((data) => {
+          axiosSecure.post("/classes", newClass)
+            .then((data) => {
+           console.log("after posting menu item", data.data);
+           if (data.data.insertedId) {
+             reset();
+             Swal.fire({
+               position: "top-end",
+               icon: "success",
+               title: "Your class item added successfully",
+               showConfirmButton: false,
+               timer: 1500,
+             });
+           }
+         });
+          console.log(newClass);
+        }
       });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 md:w-[600px]">
-      <div className="mb-4">
-        <label htmlFor="class-name" className="block mb-2">
-          Class Name
-        </label>
-        <input
-          type="text"
-          id="class-name"
-          value={className}
-          onChange={(e) => setClassName(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="class-image" className="block mb-2">
-          Class Image
-        </label>
-        <input
-          type="text"
-          id="class-image"
-          value={classImage}
-          onChange={(e) => setClassImage(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="instructor-name" className="block mb-2">
-          Instructor Name
-        </label>
-        <input
-          type="text"
-          id="instructor-name"
-          value={instructorName}
-          onChange={(e) => setInstructorName(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="instructor-email" className="block mb-2">
-          Instructor Email
-        </label>
-        <input
-          type="text"
-          id="instructor-email"
-          value={instructorEmail}
-          onChange={(e) => setInstructorEmail(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="available-seats" className="block mb-2">
-          Available Seats
-        </label>
-        <input
-          type="number"
-          id="available-seats"
-          value={availableSeats}
-          onChange={(e) => setAvailableSeats(Number(e.target.value))}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="price" className="block mb-2">
-          Price
-        </label>
-        <input
-          type="number"
-          id="price"
-          value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-        />
-      </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+    <div className="w-[700px] mx-auto mb-3">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className=" bg-gray-200 p-8 rounded-md"
       >
-        Add
-      </button>
-    </form>
+        <div className="form-control my-3 w-full">
+          <label className="label">
+            <span className="label-text font-semibold">Class name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Class name"
+            className="input input-bordered w-full"
+            {...register("name", { required: true, maxLength: 120 })}
+          />
+        </div>
+        <div className="form-control w-full my-3">
+          <label className="label">
+            <span className="label-text">Class Image</span>
+          </label>
+          <input
+            type="file"
+            {...register("image", { required: true })}
+            className="file-input file-input-bordered w-full max-w-xs"
+          />
+        </div>
+        <div className="flex gap-5 my-3">
+          <div className="form-control w-1/2">
+            <label className="label">
+              <span className="label-text font-semibold">Instructor Name</span>
+            </label>
+            <input
+              type="text"
+              defaultValue={user?.displayName}
+              {...register("instructorName", { required: true })}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="form-control w-1/2">
+            <label className="label">
+              <span className="label-text font-semibold">Instructor Email</span>
+            </label>
+            <input
+              type="email"
+              defaultValue={user?.email}
+              {...register("instructorEmail", { required: true })}
+              className="input input-bordered w-full"
+            />
+          </div>
+        </div>
+        <div className="flex gap-5 my-3">
+          <div className="form-control w-1/2">
+            <label className="label">
+              <span className="label-text font-semibold">Available Seats</span>
+            </label>
+            <input
+              type="number"
+              placeholder="Available Seats"
+              {...register("seats", { required: true })}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="form-control w-1/2">
+            <label className="label">
+              <span className="label-text font-semibold">Price*</span>
+            </label>
+            <input
+              type="number"
+              placeholder="Price"
+              {...register("price", { required: true })}
+              className="input input-bordered w-full"
+            />
+          </div>
+        </div>
+
+        <button className="bg-[#835D23] w-full text-center py-2 px-3 flex text-white items-center gap-2 mt-4 rounded-md">
+          Add Item
+          <span>
+            <FaUtensils></FaUtensils>
+          </span>
+        </button>
+      </form>
+    </div>
   );
 };
 
