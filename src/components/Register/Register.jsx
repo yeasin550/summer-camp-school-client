@@ -1,49 +1,90 @@
 
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext)
-
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    //  registration 
-    createUser(data.email, data.password)
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser)
-        const saveUser = { name: data.name, email: data.email}
-        fetch(`/http://localhost:5000/users`, {
-          method: 'POST',
+const onSubmit = (data) => {
+  createUser(data.email, data.password).then((result) => {
+    const loggedUser = result.user;
+    console.log(loggedUser);
+
+    updateUserProfile(data.name, data.photoURL)
+      .then(() => {
+        const saveUser = {
+          name: data.name,
+          email: data.email,
+          role: "student",
+          profile: data.photoURL,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
           headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
           },
-          body: JSON.stringify(saveUser)
+          body: JSON.stringify(saveUser),
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {
-              Swal.fire("Good job!", "Register successfully", "success");
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User created successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
             }
           });
-        
       })
+      .catch((error) => console.log(error));
+  });
+};
+
+
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   //  registration 
+  //   createUser(data.email, data.password)
+  //     .then(result => {
+  //       const loggedUser = result.user;
+  //       console.log(loggedUser)
+  //       const saveUser = { name: data.name, email: data.email}
+  //       fetch(`/http://localhost:5000/users`, {
+  //         method: 'POST',
+  //         headers: {
+  //           'content-type': 'application/json'
+  //         },
+  //         body: JSON.stringify(saveUser)
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           if (data.insertedId) {
+  //             Swal.fire("Good job!", "Register successfully", "success");
+  //           }
+  //         });
+        
+  //     })
     
 
                
 
-  };
+  // };
 
   const password = watch("password"); 
 

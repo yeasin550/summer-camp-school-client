@@ -11,6 +11,10 @@ import Dashboard from "../Layout/Dashboard";
 
 import MyClass from "../pages/Dashboard/MyClass/MyClass";
 import AddNewClass from "../pages/Dashboard/AddNewClass/AddNewClass";
+import MySelectedClasses from "../pages/Dashboard/StudentDashboard/MySelectedClasses";
+import MyEnrolledClasses from "../pages/Dashboard/StudentDashboard/MyEnrolledClasses";
+import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
+import ManageUsers from "../pages/Dashboard/AdminDashboard/ManageUsers";
 
 
 // import PrivetRoute from "./PrivetRoute";
@@ -51,9 +55,25 @@ const router = createBrowserRouter([
         element: <AddNewClass></AddNewClass>,
       },
       {
-        path: 'myClass',
-        element: <MyClass></MyClass>
-      }
+        path: "myClass",
+        element: <MyClass></MyClass>,
+      },
+      {
+        path: "mySelectedClasses",
+        element: <MySelectedClasses></MySelectedClasses>,
+      },
+      {
+        path: "myEnrolledClasses",
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
     ],
   },
 ]);
