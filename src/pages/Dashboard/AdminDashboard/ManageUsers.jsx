@@ -1,22 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-// import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
-  // const [users, setUsers] = useState([])
+
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await fetch("https://summer-camp-school-server-khaki.vercel.app/users");
     return res.json();
   });
-    // console.log(users)
-    // useEffect(() => {
-    //   fetch("https://summer-camp-school-server-khaki.vercel.app/users")
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       setUsers(data);
-    //     });
-    // }, []);
+
 
 
 
@@ -34,7 +26,7 @@ const ManageUsers = () => {
                   Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${user.name} is an Instructor Now!`,
+                    title: `${user.name} is an Admin Now!`,
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -57,7 +49,7 @@ const ManageUsers = () => {
                   Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${user.name} is an Admin Now!`,
+                    title: `${user.name} is an Instructor Now!`,
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -104,8 +96,11 @@ const ManageUsers = () => {
                   <td>{user.role}</td>
                   <th>
                     {user.role === "admin" ? (
-                      "admin"
+                      <button className="bg-gray-300 rounded-md py-3 px-4 text-gray-400">
+                        Admin
+                      </button>
                     ) : (
+                      // "admin"
                       <button
                         onClick={() => handleMakeAdmin(user)}
                         className="hover:bg-red-400 bg-red-600 py-3 px-4 rounded-md text-white"
@@ -116,8 +111,11 @@ const ManageUsers = () => {
                   </th>
                   <th>
                     {user.role === "instructor" ? (
-                      "instructor"
+                      <button className="bg-gray-300 rounded-md py-3 px-4 text-gray-400">
+                        Instructor
+                      </button>
                     ) : (
+                      // "instructor"
                       <button
                         onClick={() => handleMakeInstructor(user)}
                         className="hover:bg-orange-400 bg-orange-600 py-3 px-4 rounded-md text-white"
