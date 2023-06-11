@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-    
+    // instructor route
       {
         path: "addNewClass",
         element: <AddNewClass></AddNewClass>,
