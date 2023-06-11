@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const Dashboard = () => {
 
   const isAdmin = true;
-  const isInstructor = true;
+  const isInstructor = false;
 
 
     return (
@@ -24,16 +24,16 @@ const Dashboard = () => {
           <ul className="menu p-4 w-80 h-full bg-green-400 text-2xl ">
             {/* Sidebar content here */}
 
-            {isAdmin? (
-              <>
+            {isAdmin ? (
+              <div className="border-2">
                 <li>
                   <NavLink to="/dashboard/manageClasses">ManageClasses</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageUsers">ManageUsers</NavLink>
                 </li>
-              </>
-            ) : isInstructor? (
+              </div>
+            ) : isInstructor ? (
               <>
                 <li>
                   <NavLink to="/dashboard/addNewClass">AddNewClass</NavLink>
@@ -60,15 +60,17 @@ const Dashboard = () => {
               <NavLink to="/dashboard/myClass">My Class</NavLink>
             </li> */}
             <div className="divider"></div>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/instructors">Instructor</NavLink>
-            </li>
-            <li>
-              <NavLink to="/classes">Classes</NavLink>
-            </li>
+            <div className="border-2 text-left">
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/instructors">Instructor</NavLink>
+              </li>
+              <li>
+                <NavLink to="/classes">Classes</NavLink>
+              </li>
+            </div>
           </ul>
         </div>
       </div>

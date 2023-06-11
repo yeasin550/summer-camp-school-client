@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import axios from "axios";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const AddNewClass = () => {
@@ -17,7 +18,7 @@ const AddNewClass = () => {
     register,
     handleSubmit,
     reset,
-    //  formState: { errors },
+     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
@@ -32,33 +33,38 @@ const AddNewClass = () => {
       .then((res) => res.json())
       .then((imgResponse) => {
         // console.log(imgResponse)
-        // console.log(imgResponse)
+        
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
-          const { name, price, instructorName, instructorEmail } = data;
+          const { name, price, instructorName, instructorEmail, seats } = data;
           const newClass = {
             name,
             price: parseFloat(price),
             instructorName,
             instructorEmail,
+            seats,
             image: imgURL,
           };
 
-          // axiosSecure.post("/menu", newItem).then((data) => {
-          axiosSecure.post("/classes", newClass)
+         
+          axiosSecure
+            .post(
+              "https://summer-camp-school-server-khaki.vercel.app/classes",
+              newClass
+            )
             .then((data) => {
-           console.log("after posting menu item", data.data);
-           if (data.data.insertedId) {
-             reset();
-             Swal.fire({
-               position: "top-end",
-               icon: "success",
-               title: "Your class item added successfully",
-               showConfirmButton: false,
-               timer: 1500,
-             });
-           }
-         });
+              console.log("after posting menu item", data.data);
+              if (data.data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Your class item added successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
           console.log(newClass);
         }
       });
@@ -129,7 +135,7 @@ const AddNewClass = () => {
           </div>
           <div className="form-control w-1/2">
             <label className="label">
-              <span className="label-text font-semibold">Price*</span>
+              <span className="label-text font-semibold">Price</span>
             </label>
             <input
               type="number"
