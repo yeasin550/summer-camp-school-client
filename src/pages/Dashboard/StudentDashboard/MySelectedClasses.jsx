@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const MyEnrolledClasses = () => {
-  // const {id} = useParams()
+  // const {_id} = useParams()
   const [enrolled, setEnrolled] = useState([]);
 
   useEffect(() => {
@@ -14,6 +14,13 @@ const MyEnrolledClasses = () => {
         setEnrolled(data);
       });
   }, []);
+
+  const handleDelete = (_id) => {
+      console.log(_id)
+    }
+
+
+
 
   return (
     <div>
@@ -57,7 +64,10 @@ const MyEnrolledClasses = () => {
 
                 <td className="px-6 py-4 whitespace-no-wrap">{enrol.email}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">
-                  <button className="px-4 py-3 mr-2 bg-red-600 hover:bg-red-400 text-white rounded-lg">
+                  <button
+                    onClick={() => handleDelete(enrolled._id)}
+                    className="px-4 py-3 mr-2 bg-red-600 hover:bg-red-400 text-white rounded-lg"
+                  >
                     <FaTrashAlt></FaTrashAlt>
                   </button>
                 </td>

@@ -69,12 +69,12 @@ const router = createBrowserRouter([
       {
         path: "mySelectedClasses",
         element: <MySelectedClasses></MySelectedClasses>,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/carts/${params._id}`),
       },
       {
         path: "myEnrolledClasses",
         element: <MyEnrolledClasses></MyEnrolledClasses>,
-        // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/carts/${params.id}`),
       },
       {
         path: "payment",
