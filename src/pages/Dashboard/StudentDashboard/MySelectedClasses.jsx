@@ -20,8 +20,8 @@ const {user} = useContext(AuthContext)
       });
   }, []);
 
-  const handleDelete = (_id) => {
-      console.log(_id, 'specifif id')
+  const handleDelete = (user) => {
+      console.log(user, 'specifif id')
     }
 
 
@@ -30,7 +30,7 @@ const {user} = useContext(AuthContext)
   return (
     <div>
       <h1 className="text-3xl my-4 font-semibold">
-        My Enrolled Classes : {enrolled.length}
+        My Selected Classes : {enrolled.length}
       </h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -72,7 +72,7 @@ const {user} = useContext(AuthContext)
                 <td className="px-6 py-4 whitespace-no-wrap">{enrol.email}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">
                   <button
-                    onClick={() => handleDelete(enrolled._id)}
+                    onClick={() => handleDelete(user)}
                     className="px-4 py-3 mr-2 bg-red-600 hover:bg-red-400 text-white rounded-lg"
                   >
                     <FaTrashAlt></FaTrashAlt>

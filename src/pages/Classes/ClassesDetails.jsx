@@ -7,7 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const ClassesDetails = ({ enrol }) => {
   const { user } = useContext(AuthContext)
-  console.log(user)
+  // console.log(user)
     console.log(enrol)
   // eslint-disable-next-line react/prop-types
   const { image, name, instructorName, availableSeats, price, _id } = enrol;

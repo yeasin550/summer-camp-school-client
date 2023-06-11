@@ -1,9 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
 
-  const isAdmin = true;
-  const isInstructor = false;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
+
+
+  const [isInstructor] = useInstructor();
 
 
     return (
@@ -33,7 +38,8 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/manageUsers">ManageUsers</NavLink>
                 </li>
               </div>
-            ) : isInstructor ? (
+            ) : (
+              isInstructor ? (
               <>
                 <li>
                   <NavLink to="/dashboard/addNewClass">AddNewClass</NavLink>
@@ -42,13 +48,17 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/myClass">MyClass</NavLink>
                 </li>
               </>
-            ) : (
+              ) :
               <>
                 <li>
-                  <NavLink to="/dashboard/instructors">Instructor</NavLink>
+                  <NavLink to="/dashboard/mySelectedClasses">
+                    MySelectedClasses
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/classes">Classes</NavLink>
+                  <NavLink to="/dashboard/myEnrolledClasses">
+                    MyEnrolledClasses
+                  </NavLink>
                 </li>
               </>
             )}
