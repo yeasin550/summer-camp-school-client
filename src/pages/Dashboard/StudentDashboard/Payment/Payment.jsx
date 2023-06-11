@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import { loadStripe } from "@stripe/stripe-js";
 // import { Elements } from "@stripe/react-stripe-js";
 // import CheckoutForm from "./CheckoutForm";
@@ -23,10 +24,15 @@
 // export default Payment;
 
 
+
+
+
+import React from 'react';
+
 const Payment = () => {
     return (
         <div>
-            Specific Payment method
+            <h1>payment method</h1>
         </div>
     );
 };

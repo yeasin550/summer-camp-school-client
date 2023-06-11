@@ -58,6 +58,7 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+    
       {
         path: "addNewClass",
         element: <AddNewClass></AddNewClass>,
@@ -66,11 +67,10 @@ const router = createBrowserRouter([
         path: "myClass",
         element: <MyClass></MyClass>,
       },
+      // user dashboard
       {
         path: "mySelectedClasses",
         element: <MySelectedClasses></MySelectedClasses>,
-        // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/carts/${params._id}`),
       },
       {
         path: "myEnrolledClasses",
@@ -80,6 +80,7 @@ const router = createBrowserRouter([
         path: "payment",
         element: <Payment></Payment>,
       },
+      // adminRoute
       {
         path: "manageUsers",
         element: <ManageUsers></ManageUsers>,

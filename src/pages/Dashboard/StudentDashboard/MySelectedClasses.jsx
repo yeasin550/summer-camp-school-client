@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
-import { FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
+import { Link} from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 const MyEnrolledClasses = () => {
+const {user} = useContext(AuthContext)
   // const {_id} = useParams()
   const [enrolled, setEnrolled] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/carts")
+    fetch(
+      `https://summer-camp-school-server-khaki.vercel.app/carts?email=${user?.email}`
+    )
+      // fetch('http://localhost:5000/carts')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -16,7 +21,7 @@ const MyEnrolledClasses = () => {
   }, []);
 
   const handleDelete = (_id) => {
-      console.log(_id)
+      console.log(_id, 'specifif id')
     }
 
 
@@ -24,7 +29,9 @@ const MyEnrolledClasses = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold">My Enrolled Classes</h1>
+      <h1 className="text-3xl my-4 font-semibold">
+        My Enrolled Classes : {enrolled.length}
+      </h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead>
@@ -44,7 +51,7 @@ const MyEnrolledClasses = () => {
               <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Actions
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 bg-gray-50  text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Bank
               </th>
             </tr>
@@ -73,8 +80,8 @@ const MyEnrolledClasses = () => {
                 </td>
                 <td>
                   <Link to="/dashboard/payment">
-                    <button className="px-4 py-2 mr-2 bg-blue-500 text-white rounded-lg">
-                      Payment
+                    <button className="px-4 py-3 ml-2 bg-blue-500 text-white rounded-lg">
+                      <FaMoneyCheckAlt></FaMoneyCheckAlt>
                     </button>
                   </Link>
                 </td>
