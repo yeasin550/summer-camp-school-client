@@ -73,6 +73,8 @@ const router = createBrowserRouter([
       {
         path: "myEnrolledClasses",
         element: <MyEnrolledClasses></MyEnrolledClasses>,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/carts/${params.id}`),
       },
       {
         path: "payment",

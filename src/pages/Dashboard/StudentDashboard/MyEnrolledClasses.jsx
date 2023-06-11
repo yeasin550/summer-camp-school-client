@@ -1,34 +1,30 @@
+import { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
 
 const MyEnrolledClasses = () => {
+  // const {id} = useParams()
+  const [enrolled, setEnrolled] = useState([])
+  
 
- const data = [
-   {
-     id: 1,
-     name: "John Doe",
-     email: "john@example.com",
-     image: "https://example.com/john.jpg",
-   },
-   {
-     id: 2,
-     name: "Jane Smith",
-     email: "jane@example.com",
-     image: "https://example.com/jane.jpg",
-   },
-   {
-     id: 3,
-     name: "Bob Johnson",
-     email: "bob@example.com",
-     image: "https://example.com/bob.jpg",
-   },
- ];
+  useEffect(() => {
+    fetch("http://localhost:5000/carts")
+    .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      setEnrolled(data)
+    })
+      }, [])
 
     return (
       <div>
-        My Enrolled Classes
+        <h1 className="text-3xl font-semibold">My Enrolled Classes</h1>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
               <tr>
+                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  #
+                </th>
                 <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   Image
                 </th>
@@ -41,25 +37,36 @@ const MyEnrolledClasses = () => {
                 <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
+                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  Bank
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {data.map((row) => (
-                <tr key={row.id}>
+              {enrolled.map((enrol, index) => (
+                <tr key={enrol._id}>
+                  <td className="px-6 py-4 whitespace-no-wrap">{index + 1}</td>
                   <td className="px-6 py-4 whitespace-no-wrap">
                     <img
-                      src={row.image}
-                      alt={row.name}
-                      className="h-10 w-10 rounded-full"
+                      src={enrol.image}
+                      alt={enrol.name}
+                      className="h-14 w-14 rounded-md"
                     />
                   </td>
-                  <td className="px-6 py-4 whitespace-no-wrap">{row.name}</td>
-                  <td className="px-6 py-4 whitespace-no-wrap">{row.email}</td>
+                  <td className="px-6 py-4 whitespace-no-wrap">{enrol.name}</td>
+
+                  <td className="px-6 py-4 whitespace-no-wrap">
+                    {enrol.email}
+                  </td>
                   <td className="px-6 py-4 whitespace-no-wrap">
                     <button className="px-4 py-2 mr-2 bg-blue-500 text-white rounded-lg">
-                      Success
+                      Delete
                     </button>
-                   
+                  </td>
+                  <td>
+                    <button className="px-4 py-2 mr-2 bg-blue-500 text-white rounded-lg">
+                      Payment
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ClassesDetails = ({ enrol }) => {
+  const { user } = useContext(AuthContext)
+  console.log(user)
     console.log(enrol)
   // eslint-disable-next-line react/prop-types
-  const { image, name, instructorName, availableSeats, price } = enrol;
+  const { image, name, instructorName, availableSeats, price, _id } = enrol;
 
   const notAvailable = () => {
      Swal.fire({
@@ -17,28 +21,40 @@ const ClassesDetails = ({ enrol }) => {
        timer: 1500,
      });
   }
-  const enrolledClass = (enrol) => {
-    console.log(enrol);
-    fetch(`http://localhost:5000/carts`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(enrol),
-    }).then((res) =>
-      res.json().then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your successfully select the class",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-    );
+
+
+  const enrolledClass = (cartId) => {
+    // console.log(enrol);
+    if (user) {
+      const classItem = {
+        cartId,
+        instructorName,
+        email: user?.email,
+        name,
+        image,
+        price,
+      };
+      fetch(`http://localhost:5000/carts`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classItem),
+      }).then((res) =>
+        res.json().then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your successfully select the class",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+      );
+    }
   };
 
 
@@ -84,7 +100,7 @@ const ClassesDetails = ({ enrol }) => {
                 <p className="text-lg ">Price: {price}</p>
                 <div className="text-center">
                   <button
-                    onClick={() => enrolledClass(enrol)}
+                    onClick={() => enrolledClass(_id)}
                     className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
                   >
                     Select
