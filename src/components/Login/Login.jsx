@@ -38,18 +38,7 @@ const showPassword = () => {
     });
   };
 
-// const handleGoogleSignIn = () => {
-//   googleSignIn()
-//     .then((result) => {
-//       const loggedUser = result.user;
-//       console.log(loggedUser);
-//       Swal.fire("Good job!", "Login successfully", "success");
-//        navigate(from, { replace: true });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
+
 
 
   return (
