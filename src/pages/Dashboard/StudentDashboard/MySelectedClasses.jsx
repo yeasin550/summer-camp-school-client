@@ -1,28 +1,28 @@
 import { useContext, useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+
 import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+// import MySelectedClassesDetails from "./MySelectedClassesDetails";
 const MyEnrolledClasses = () => {
 const {user} = useContext(AuthContext)
-  // const {_id} = useParams()
+
   const [enrolled, setEnrolled] = useState([]);
 
   useEffect(() => {
     fetch(
       `https://summer-camp-school-server-khaki.vercel.app/carts?email=${user?.email}`
     )
-      // fetch('http://localhost:5000/carts')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setEnrolled(data);
       });
-  }, []);
+  }, [user]);
 
-  const handleDelete = (user) => {
-      console.log(user, 'specifif id')
-    }
+  // const handleDelete = (_id) => {
+  //     console.log(_id, 'specifif id')
+  //   }
 
 
 
@@ -57,6 +57,15 @@ const {user} = useContext(AuthContext)
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
+
+            {/* {
+              enrolled.map((enrol, index) => <MySelectedClassesDetails
+                key={enrol._id}
+                enrol={enrol}
+                index={index}
+              ></MySelectedClassesDetails>)
+            } */}
+
             {enrolled.map((enrol, index) => (
               <tr key={enrol._id}>
                 <td className="px-6 py-4 whitespace-no-wrap">{index + 1}</td>
@@ -72,7 +81,7 @@ const {user} = useContext(AuthContext)
                 <td className="px-6 py-4 whitespace-no-wrap">{enrol.email}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">
                   <button
-                    onClick={() => handleDelete(user)}
+                    // onClick={() => handleDelete(user._id)}
                     className="px-4 py-3 mr-2 bg-red-600 hover:bg-red-400 text-white rounded-lg"
                   >
                     <FaTrashAlt></FaTrashAlt>

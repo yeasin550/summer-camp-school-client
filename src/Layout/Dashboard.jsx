@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { FaHome, FaUserFriends } from "react-icons/fa";
 
 const Dashboard = () => {
 
@@ -35,21 +36,21 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/manageClasses">ManageClasses</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manageUsers">ManageUsers</NavLink>
+                  <NavLink to="/dashboard/manageUsers"><FaUserFriends></FaUserFriends> ManageUsers</NavLink>
                 </li>
               </div>
             ) : (
               isInstructor ? (
-              <>
+              <div className="border-2">
                 <li>
                   <NavLink to="/dashboard/addNewClass">AddNewClass</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/myClass">MyClass</NavLink>
                 </li>
-              </>
+              </div>
               ) :
-              <>
+              <div className="border-2">
                 <li>
                   <NavLink to="/dashboard/mySelectedClasses">
                     MySelectedClasses
@@ -60,7 +61,7 @@ const Dashboard = () => {
                     MyEnrolledClasses
                   </NavLink>
                 </li>
-              </>
+              </div>
             )}
 
             {/* <li>
@@ -72,7 +73,7 @@ const Dashboard = () => {
             <div className="divider"></div>
             <div className="border-2 text-left">
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/"><FaHome></FaHome> Home</NavLink>
               </li>
               <li>
                 <NavLink to="/instructors">Instructor</NavLink>

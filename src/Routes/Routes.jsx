@@ -58,7 +58,16 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-    // instructor route
+      // adminRoute
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "manageClasses",
+        element: <ManageClasses></ManageClasses>,
+      },
+      // instructor route
       {
         path: "addNewClass",
         element: <AddNewClass></AddNewClass>,
@@ -79,15 +88,6 @@ const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment></Payment>,
-      },
-      // adminRoute
-      {
-        path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
-      },
-      {
-        path: "manageClasses",
-        element: <ManageClasses></ManageClasses>,
       },
     ],
   },

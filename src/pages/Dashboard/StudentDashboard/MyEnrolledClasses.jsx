@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // import { useParams } from "react-router-dom";
 
 const MyEnrolledClasses = () => {
   // const {id} = useParams()
-  const [enrolled, setEnrolled] = useState([])
+  // const [enrolled, setEnrolled] = useState([])
   
 
   useEffect(() => {
@@ -11,14 +11,14 @@ const MyEnrolledClasses = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setEnrolled(data);
+        // setEnrolled(data);
       });
       }, [])
 
     return (
       <div>
         <h1 className="text-3xl font-semibold">My Enrolled Classes</h1>
-        <div className="overflow-x-auto">
+        {/* <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
               <tr>
@@ -72,7 +72,7 @@ const MyEnrolledClasses = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     );
 };

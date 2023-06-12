@@ -13,7 +13,7 @@ const MyClass = () => {
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Role</th>
+                <th className="text-center">Role</th>
                 <th>Action</th>
                 <th>X</th>
                 <th></th>
@@ -41,7 +41,19 @@ const MyClass = () => {
                 </td>
                 <td> Yeasin </td>
                 <td>yeasin@gmail.com</td>
-                <td>Pending</td>
+                <td className="flex gap-1">
+                  <button className="bg-red-600 hover:bg-red-400 rounded px-3 py-2 text-white">
+                    pending
+                  </button>
+                 
+                  <button className="bg-red-600 hover:bg-red-400 rounded px-3 py-2 text-white">
+                    approved
+                  </button>
+                  
+                  <button className="bg-red-600 hover:bg-red-400 rounded px-3 py-2 text-white">
+                    denied
+                  </button>
+                </td>
 
                 <td>
                   <button className="bg-[#F4C152] hover:bg-[#F4C100] rounded p-3">
