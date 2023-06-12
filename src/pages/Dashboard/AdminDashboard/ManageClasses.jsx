@@ -33,7 +33,9 @@ useEffect(() => {
 
     return (
       <div className="w-full ml-8">
-        <h1 className=" text-3xl font-semibold ">Total Add Class : </h1>
+        <h1 className=" text-3xl font-semibold ">
+          Total Add Class : {approved.length}
+        </h1>
         <div className=" w-full overflow-x-auto mt-4">
           <table className="table">
             {/* head */}
@@ -51,11 +53,13 @@ useEffect(() => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {approved?.map((approve, index) => <ManageClassesDetails
-                key={approve._id}
-                approve={approve}
-                index={index}
-              ></ManageClassesDetails>)}
+              {approved?.map((approve, index) => (
+                <ManageClassesDetails
+                  key={approve._id}
+                  approve={approve}
+                  index={index}
+                ></ManageClassesDetails>
+              ))}
               {/* {approved?.map((approve, index) => (
                 <tr key={approve._id}>
                   <th>{index + 1}</th>

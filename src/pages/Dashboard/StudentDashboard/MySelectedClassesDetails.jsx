@@ -2,12 +2,15 @@
 
 import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MySelectedClassesDetails = ({enrol, index}) => {
     const { image, email, name, _id} = enrol;
     console.log(enrol);
 
-
+    const handlePayment = (_id)=> {
+        console.log(_id)
+    }
 
   const handleDelete = (_id) => {
       console.log(_id);
@@ -16,7 +19,16 @@ const MySelectedClassesDetails = ({enrol, index}) => {
       })
           .then(res => res.json())
           .then(data => {
-          console.log(data)
+              console.log(data)
+              if (data.deletedCount) {
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your class has been saved",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+              }
       })
   };
 
@@ -45,7 +57,7 @@ const MySelectedClassesDetails = ({enrol, index}) => {
       </td>
       <td>
         <Link to="/dashboard/payment">
-          <button className="px-4 py-3 ml-2 bg-blue-500 text-white rounded-lg">
+          <button onClick={()=> handlePayment(_id)} className="px-4 py-3 ml-2 bg-blue-500 text-white rounded-lg">
             <FaMoneyCheckAlt></FaMoneyCheckAlt>
           </button>
         </Link>

@@ -9,7 +9,8 @@ const ManageClassesDetails = ({ approve, index }) => {
 
   const handleApproved = (_id) => {
     console.log(_id);
-    setIsPending(false);
+      setIsPending(false);
+      
   };
   const handleDenied = (_id) => {
     console.log(_id);

@@ -58,14 +58,15 @@ const MyEnrolledClasses = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {
-              enrolled?.map((enrol, index) => <MySelectedClassesDetails
-                key={enrol._id}
-                enrol={enrol}
-                index={index}
-              ></MySelectedClassesDetails>)
-            }
-            
+            {enrolled.length &&
+              enrolled?.map((enrol, index) => (
+                <MySelectedClassesDetails
+                  key={enrol._id}
+                  enrol={enrol}
+                  index={index}
+                ></MySelectedClassesDetails>
+              ))}
+
             {/* enrolled.length && */}
             {/* {enrolled?.map((enrol, index) => (
               <tr key={enrol._id}>

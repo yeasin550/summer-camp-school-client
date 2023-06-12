@@ -2,8 +2,11 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 import { FaHome, FaUserFriends } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Dashboard = () => {
+  const {user} = useContext(AuthContext)
 
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
@@ -30,17 +33,24 @@ const Dashboard = () => {
           <ul className="menu p-4 w-80 h-full bg-green-400 text-2xl ">
             {/* Sidebar content here */}
 
+            <div className="avatar mx-auto p-3">
+              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={user?.photoURL} />
+              </div>
+            </div>
+
             {isAdmin ? (
               <div className="border-2">
                 <li>
                   <NavLink to="/dashboard/manageClasses">ManageClasses</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manageUsers"><FaUserFriends></FaUserFriends> ManageUsers</NavLink>
+                  <NavLink to="/dashboard/manageUsers">
+                    <FaUserFriends></FaUserFriends> ManageUsers
+                  </NavLink>
                 </li>
               </div>
-            ) : (
-              isInstructor ? (
+            ) : isInstructor ? (
               <div className="border-2">
                 <li>
                   <NavLink to="/dashboard/addNewClass">AddNewClass</NavLink>
@@ -49,7 +59,7 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/myClass">MyClass</NavLink>
                 </li>
               </div>
-              ) :
+            ) : (
               <div className="border-2">
                 <li>
                   <NavLink to="/dashboard/mySelectedClasses">
@@ -73,7 +83,9 @@ const Dashboard = () => {
             <div className="divider"></div>
             <div className="border-2 text-left">
               <li>
-                <NavLink to="/"><FaHome></FaHome> Home</NavLink>
+                <NavLink to="/">
+                  <FaHome></FaHome> Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/instructors">Instructor</NavLink>
