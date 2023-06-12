@@ -10,15 +10,16 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const AddNewClass = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const {
     register,
+
     handleSubmit,
     reset,
-     formState: { errors },
+    formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
@@ -33,25 +34,23 @@ const AddNewClass = () => {
       .then((res) => res.json())
       .then((imgResponse) => {
         // console.log(imgResponse)
-        
+
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
           const { name, price, instructorName, instructorEmail, seats } = data;
+          console.log(seats)
           const newClass = {
             name,
             price: parseFloat(price),
             instructorName,
             instructorEmail,
-            seats,
+            seats: parseFloat(seats),
             image: imgURL,
+            status: "pending",
           };
 
-         
           axiosSecure
-            .post(
-              "https://summer-camp-school-server-khaki.vercel.app/classes",
-              newClass
-            )
+            .post("http://localhost:5000/classes", newClass)
             .then((data) => {
               console.log("after posting menu item", data.data);
               if (data.data.insertedId) {

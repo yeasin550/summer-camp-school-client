@@ -1,18 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 
-import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
+// import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import MySelectedClassesDetails from "./MySelectedClassesDetails";
 // import MySelectedClassesDetails from "./MySelectedClassesDetails";
 const MyEnrolledClasses = () => {
-const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const [enrolled, setEnrolled] = useState([]);
+  console.log(enrolled);
 
   useEffect(() => {
-    fetch(
-      `https://summer-camp-school-server-khaki.vercel.app/carts?email=${user?.email}`
-    )
+    fetch(`http://localhost:5000/carts?email=${user?.email}`, {
+      headers: {
+        authorization: `bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -23,9 +27,6 @@ const {user} = useContext(AuthContext)
   // const handleDelete = (_id) => {
   //     console.log(_id, 'specifif id')
   //   }
-
-
-
 
   return (
     <div>
@@ -57,16 +58,16 @@ const {user} = useContext(AuthContext)
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-
-            {/* {
-              enrolled.map((enrol, index) => <MySelectedClassesDetails
+            {
+              enrolled?.map((enrol, index) => <MySelectedClassesDetails
                 key={enrol._id}
                 enrol={enrol}
                 index={index}
               ></MySelectedClassesDetails>)
-            } */}
-
-            {enrolled.map((enrol, index) => (
+            }
+            
+            {/* enrolled.length && */}
+            {/* {enrolled?.map((enrol, index) => (
               <tr key={enrol._id}>
                 <td className="px-6 py-4 whitespace-no-wrap">{index + 1}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">
@@ -81,7 +82,7 @@ const {user} = useContext(AuthContext)
                 <td className="px-6 py-4 whitespace-no-wrap">{enrol.email}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">
                   <button
-                    // onClick={() => handleDelete(user._id)}
+                    onClick={() => handleDelete(enrolled._id)}
                     className="px-4 py-3 mr-2 bg-red-600 hover:bg-red-400 text-white rounded-lg"
                   >
                     <FaTrashAlt></FaTrashAlt>
@@ -95,7 +96,7 @@ const {user} = useContext(AuthContext)
                   </Link>
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
       </div>

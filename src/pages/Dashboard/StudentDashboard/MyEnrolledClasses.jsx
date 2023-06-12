@@ -1,24 +1,23 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 // import { useParams } from "react-router-dom";
 
 const MyEnrolledClasses = () => {
   // const {id} = useParams()
   // const [enrolled, setEnrolled] = useState([])
-  
 
-  useEffect(() => {
-    fetch("https://summer-camp-school-server-khaki.vercel.app/carts")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // setEnrolled(data);
-      });
-      }, [])
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/carts")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       // setEnrolled(data);
+  //     });
+  // }, []);
 
-    return (
-      <div>
-        <h1 className="text-3xl font-semibold">My Enrolled Classes</h1>
-        {/* <div className="overflow-x-auto">
+  return (
+    <div>
+      <h1 className="text-3xl font-semibold">My Enrolled Classes</h1>
+      {/* <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
               <tr>
@@ -73,8 +72,8 @@ const MyEnrolledClasses = () => {
             </tbody>
           </table>
         </div> */}
-      </div>
-    );
+    </div>
+  );
 };
 
 export default MyEnrolledClasses;

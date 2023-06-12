@@ -8,7 +8,7 @@ const MyClass = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr>
+            <tr>
                 <th>#</th>
                 <th>Image</th>
                 <th>Name</th>

@@ -4,14 +4,13 @@ import ClassesDetails from "./ClassesDetails";
 const Classes = () => {
   const [enrolClasses, setEnrolClasses] = useState([]);
   useEffect(() => {
-    fetch("https://summer-camp-school-server-khaki.vercel.app/classes")
+    fetch("http://localhost:5000/activeClasses")
       .then((res) => res.json())
       .then((data) => {
         setEnrolClasses(data);
         console.log(data);
       });
-
-  }, [])
+  }, []);
   return (
     <div className="mt-5 md:mx-10 grid grid-cols-1 md:grid-cols-3 gap-5">
       {enrolClasses.map((enrol) => (
@@ -19,5 +18,5 @@ const Classes = () => {
       ))}
     </div>
   );
-}
+};
 export default Classes;
