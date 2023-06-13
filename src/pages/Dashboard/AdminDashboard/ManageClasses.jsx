@@ -55,6 +55,8 @@ useEffect(() => {
                   key={approve._id}
                   approve={approve}
                   index={index}
+                  setApproved={setApproved}
+                  approved={approved}
                 ></ManageClassesDetails>
               ))}
               {/* {approved?.map((approve, index) => (

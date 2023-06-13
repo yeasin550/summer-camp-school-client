@@ -9,7 +9,7 @@ const Instructors = () => {
       .then((res) => res.json())
       .then((data) => {
         setInstructor(data);
-        // console.log(data);
+        console.log(data);
       });
   }, []);
 

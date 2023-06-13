@@ -4,17 +4,26 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const ClassesDetails = ({ enrol }) => {
   const { user } = useContext(AuthContext);
-  //  const navigate = useNavigate();
+  const [isAdmin] = useAdmin();
+  
+    const [isInstructor] = useInstructor();
+
+  // console.log(isAdmin)
+
+   const navigate = useNavigate();
   //  const location = useLocation();
   // const from = location.state?.from?.pathname || "/";
   // console.log(user)
   console.log(enrol);
   // eslint-disable-next-line react/prop-types
-  const { image, name, instructorName, seats, price, _id } = enrol;
+  const { image, name, instructorName, seats, price, _id, availableSeats } =
+    enrol;
   // console.log(sea)
 
   const notAvailable = () => {
@@ -27,9 +36,13 @@ const ClassesDetails = ({ enrol }) => {
     });
   };
 
-  const enrolledClass = (cartId) => {
-    // console.log(enrol);
-    if (user) {
+  const handleSelect = (cartId) => {
+    // console.log(cartId);
+    if (!user) {
+      navigate("/login");
+  
+    }
+    else {
       const classItem = {
         cartId,
         instructorName,
@@ -56,7 +69,6 @@ const ClassesDetails = ({ enrol }) => {
               timer: 1500,
             });
           }
-          
         })
       );
     }
@@ -65,7 +77,7 @@ const ClassesDetails = ({ enrol }) => {
 
   return (
     <div>
-      {seats === 0 ? (
+      {availableSeats === 0 ? (
         <>
           <div className=" card-compact w-96 bg-red-400  shadow-xl">
             <figure>
@@ -74,7 +86,7 @@ const ClassesDetails = ({ enrol }) => {
             <div className="card-body ">
               <h3 className="text-lg ">Name : {name}</h3>
               <p className="text-lg">InstructorName : {instructorName}</p>
-              <p className="text-lg">AvailableSeats : {seats}</p>
+              <p className="text-lg">AvailableSeats : {availableSeats}</p>
               <p className="text-lg">Price: ${price}</p>
               <div className="text-center">
                 <button
@@ -96,12 +108,17 @@ const ClassesDetails = ({ enrol }) => {
             <div className="card-body ">
               <h3 className="text-lg">Name : {name}</h3>
               <p className=" text-lg">InstructorName : {instructorName}</p>
-              <p className=" text-lg">AvailableSeats : {seats}</p>
+              <p className=" text-lg">AvailableSeats : {availableSeats}</p>
               <p className="text-lg ">Price: {price}</p>
               <div className="text-center">
                 <button
-                  onClick={() => enrolledClass(_id)}
-                  className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
+                  onClick={() => handleSelect(_id)}
+                  // className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
+                  className={
+                    isAdmin === true || isInstructor === true
+                      ? "w-full cursor-not-allowed bg-blue-300 py-2 px-3 rounded text-white font-bold "
+                      : "w-full bg-primary py-2 px-3 rounded text-white font-bold "
+                  }
                 >
                   Select
                 </button>

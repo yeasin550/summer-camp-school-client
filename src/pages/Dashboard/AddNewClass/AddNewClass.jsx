@@ -45,6 +45,7 @@ const AddNewClass = () => {
             instructorName,
             instructorEmail,
             seats: parseFloat(seats),
+            availableSeats: parseFloat(seats),
             image: imgURL,
             status: "pending",
           };

@@ -3,8 +3,9 @@ import { useContext, useEffect, useState } from "react";
 // import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import MySelectedClassesDetails from "./MySelectedClassesDetails";
 // import MySelectedClassesDetails from "./MySelectedClassesDetails";
+// import Swal from "sweetalert2";
+import MySelectedClassesDetails from "./MySelectedClassesDetails";
 const MyEnrolledClasses = () => {
   const { user } = useContext(AuthContext);
 
@@ -23,10 +24,48 @@ const MyEnrolledClasses = () => {
         setEnrolled(data);
       });
   }, [user]);
+  // const enrolledClass = (cartId) => {
+  //   // console.log(enrol);
+  //   if (user) {
+  //     const classItem = {
+  //       cartId,
+  //       instructorName,
+  //       email: user?.email,
+  //       name,
+  //       image,
+  //       price,
+  //     };
+  //     fetch(`http://localhost:5000/carts`, {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(classItem),
+  //     }).then((res) =>
+  //       res.json().then((data) => {
+  //         console.log(data);
+  //         if (data.insertedId) {
+  //           Swal.fire({
+  //             position: "top-end",
+  //             icon: "success",
+  //             title: "Your successfully select the class",
+  //             showConfirmButton: false,
+  //             timer: 1500,
+  //           });
+  //         }
+  //       })
+  //     );
+  //   }
+  //   // navigate("/login");
+  // };
 
-  // const handleDelete = (_id) => {
+
+
+
+ // const handleDelete = (_id) => {
   //     console.log(_id, 'specifif id')
   //   }
+ 
 
   return (
     <div>

@@ -3,11 +3,11 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 // import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import useCart from "../../../hooks/UseCart";
+// import useCart from "../../../hooks/UseCart";
 
-const ManageClassesDetails = ({ approve, index }) => {
-    console.log(approve);
-    const { image, instructorEmail, name } = approve;
+const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
+  console.log(approve);
+  const { image, instructorEmail, name } = approve;
   // const [isPending, setIsPending] = useState(true);
   const [isDenied, setIsDenied] = useState(true);
   const [axiosSecure] = useAxiosSecure();
@@ -15,64 +15,65 @@ const ManageClassesDetails = ({ approve, index }) => {
   //   const res = await axiosSecure.get("/allClasses");
   //   const data = await res.data;
   //   return data;
-  // }); 
-  const [cart, refetch] = useCart()
-  console.log(cart)
+  // });
+  // const [cart, refetch] = useCart();
+  // console.log(cart);
   const handleApproved = (_id) => {
     console.log(_id);
-      // setIsPending(false);
-        axiosSecure(`/statusUpdate/${_id}`, {
-          method: "PATCH",
-        }).then((data) => {
-          console.log(data);
-          if (data.data.acknowledged) {
-            refetch();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your class has been saved",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+    // setIsPending(false);
+    axiosSecure(`/statusUpdate/${_id}`, {
+      method: "PATCH",
+    }).then((data) => {
+      console.log(data);
+      if (data.data.acknowledged) {
+        // refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your class has been saved",
+          showConfirmButton: false,
+          timer: 1500,
         });
+        const remaining = approved.filter((item) => item._id !== _id);
+        setApproved(remaining);
+      }
+    });
   };
-
-
-
 
   const handleDenied = (_id) => {
     console.log(_id);
     setIsDenied(false);
   };
 
-    const handleFeedback = async (_id) => {
-      const { value: text } = await Swal.fire({
-        input: "textarea",
-        inputLabel: "Wright your feedback",
-        inputPlaceholder: "Type your feedback here...",
-        inputAttributes: {
-          "aria-label": "Type your message here",
-        },
-        showCancelButton: true,
-      });
+  const handleFeedback = async (_id) => {
+    const { value: text } = await Swal.fire({
+      input: "textarea",
+      inputLabel: "Wright your feedback",
+      inputPlaceholder: "Type your feedback here...",
+      inputAttributes: {
+        "aria-label": "Type your message here",
+      },
+      showCancelButton: true,
+    });
 
-      if (text) {
-        console.log(text);
-        
-        axiosSecure(`/classFeedback/${_id}`, {
-          method: "PATCH",
-          data: text,
-        }).then((data) => {
-        
-          if (data.data.acknowledged) {
-            refetch();
-           Swal.fire(text);
-          }
-        });
-      }
-    };
-    
+    if (text) {
+      console.log(text);
+
+      fetch(`http://localhost:5000/classFeedback/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ feedback: text }),
+      }).then((data) => {
+        if (data.data.acknowledged) {
+          // refetch();
+          Swal.fire(text);
+        }
+      });
+    }
+  };
+
   return (
     <tr>
       <th>{index + 1}</th>

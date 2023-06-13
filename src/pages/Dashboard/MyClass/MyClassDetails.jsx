@@ -1,127 +1,152 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-// import useAxiosSecure from "../../../hooks/useAxiosSecure";
-// import { useQuery } from "@tanstack/react-query";
-// import Swal from "sweetalert2";
-// import useCart from "../../../hooks/UseCart";
+/* eslint-disable no-unused-vars */
 
-const MyClassDetails = ({ approve, index }) => {
-  console.log(approve);
-  const { image, instructorEmail, name } = approve;
-  // const [isPending, setIsPending] = useState(true);
-  const [isDenied, setIsDenied] = useState(true);
-//   const [axiosSecure] = useAxiosSecure();
-  // const { data: users = [], refetch } = useQuery(["allClasses"], async () => {
-  //   const res = await axiosSecure.get("/allClasses");
-  //   const data = await res.data;
-  //   return data;
-  // });
-//   const [cart, refetch] = useCart();
-//   console.log(cart);
-//   const handleApproved = (_id) => {
-//     console.log(_id);
-//     // setIsPending(false);
-//     axiosSecure(`/statusUpdate/${_id}`, {
-//       method: "PATCH",
-//     }).then((data) => {
-//       console.log(data);
-//       if (data.data.acknowledged) {
-//         refetch();
-//         Swal.fire({
-//           position: "top-end",
-//           icon: "success",
-//           title: "Your class has been saved",
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//       }
-//     });
-//   };
 
-//   const handleDenied = (_id) => {
-//     console.log(_id);
-//     setIsDenied(false);
-//   };
+import Swal from "sweetalert2";
 
-//   const handleFeedback = async (_id) => {
-//     const { value: text } = await Swal.fire({
-//       input: "textarea",
-//       inputLabel: "Wright your feedback",
-//       inputPlaceholder: "Type your feedback here...",
-//       inputAttributes: {
-//         "aria-label": "Type your message here",
-//       },
-//       showCancelButton: true,
-//     });
+import { useNavigate } from "react-router-dom";
 
-//     if (text) {
-//       console.log(text);
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
-//       axiosSecure(`/classFeedback/${_id}`, {
-//         method: "PATCH",
-//         data: text,
-//       }).then((data) => {
-//         if (data.data.acknowledged) {
-//           refetch();
-//           Swal.fire(text);
-//         }
-//       });
-//     }
-//   };
+const MyClassDetails = ({ enrol }) => {
+  const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+
+  const [isInstructor] = useInstructor();
+
+  // console.log(isAdmin)
+
+  const navigate = useNavigate();
+  //  const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
+  // console.log(user)
+  console.log(enrol);
+  // eslint-disable-next-line react/prop-types
+  const {
+    image,
+    name,
+    instructorName,
+    seats,
+    price,
+    _id,
+    availableSeats,
+    feedback,
+    status,
+  } = enrol;
+  // console.log(sea)
+
+  const notAvailable = () => {
+    Swal.fire({
+      position: "top-end",
+      icon: "info",
+      title: "This class not available",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+
+  const handleSelect = (cartId) => {
+    // console.log(cartId);
+    if (!user) {
+      navigate("/login");
+    } else {
+      const classItem = {
+        cartId,
+        instructorName,
+        email: user?.email,
+        name,
+        image,
+        price,
+      };
+      fetch(`http://localhost:5000/carts`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classItem),
+      }).then((res) =>
+        res.json().then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your successfully select the class",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+      );
+    }
+    // navigate("/login");
+  };
 
   return (
-    <tr>
-      <th>{index + 1}</th>
-      <td>
-        <div className="flex items-center space-x-3">
-          <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12">
-              <img src={image} alt="Avatar Tailwind CSS Component" />
+    <div>
+      {availableSeats === 0 ? (
+        <>
+          <div className=" card-compact h-full w-full bg-red-400  shadow-xl">
+            <figure>
+              <img className="w-full h-72" src={image} alt="Class Image" />
+            </figure>
+            <div className="card-body ">
+              <h3 className="text-lg ">Name : {name}</h3>
+              <p className="text-lg">InstructorName : {instructorName}</p>
+              <p className="text-lg">AvailableSeats : {availableSeats}</p>
+              <p className="text-lg">TotalSeats : {seats}</p>
+              <p className="text-lg">Price: ${price}</p>
+
+              <div className="text-center">
+                <button
+                  onClick={notAvailable}
+                  className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
+                >
+                  Select
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </td>
-      <td> {name} </td>
-      <td>{instructorEmail}</td>
-      <td className="flex gap-1">
-        {approve?.status === "pending" ? (
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white mt-2 font-bold py-2 px-4 rounded"
-            // onClick={() => handleApproved(approve._id)}
-          >
-            Pending
-          </button>
-        ) : (
-          <button className="bg-green-300  text-white mt-2 font-bold py-2 px-4 rounded">
-            Approved
-          </button>
-        )}
-      </td>
-      <td>
-        {isDenied ? (
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            // onClick={() => handleDenied(approve._id)}
-          >
-            Denied
-          </button>
-        ) : (
-          <button className="bg-red-300 text-white font-bold py-2 px-4 rounded">
-            Deny
-          </button>
-        )}
-      </td>
+        </>
+      ) : (
+        <>
+          <div className="  card-compact w-72 h-full bg-base-100 border-2 border-gray-200 shadow-xl">
+            <figure>
+              <img className="class-image h-72" src={image} alt="Class Image" />
+            </figure>
+            <div className="card-body ">
+              <h3 className="text-lg">Name : {name}</h3>
+              <p className=" text-lg">InstructorName : {instructorName}</p>
+              <p className=" text-lg">AvailableSeats : {availableSeats}</p>
 
-      <td>
-        <button
-        //   onClick={() => handleFeedback(approve._id)}
-          className="bg-red-600 hover:bg-red-400 rounded px-3 py-2 text-white"
-        >
-          Feedback
-        </button>
-      </td>
-    </tr>
+              <p className="text-lg ">Price: {price}</p>
+              <p className="text-lg ">
+                Status: <span>{status}</span>
+              </p>
+              <p className="text-lg ">
+                Feedback : {feedback ? feedback : "No Feedback"}
+              </p>
+              <div className="text-center ">
+                <button
+                  onClick={() => handleSelect(_id)}
+                  // className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
+                  className={
+                    isAdmin === true || isInstructor === true
+                      ? "w-full cursor-not-allowed bg-blue-300 py-2 px-3 rounded text-white font-bold "
+                      : "w-full bg-primary py-2 px-3 rounded text-white font-bold "
+                  }
+                >
+                  Select
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

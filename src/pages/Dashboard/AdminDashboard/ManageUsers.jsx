@@ -9,7 +9,7 @@ const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;
-  });
+})
 
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -32,7 +32,7 @@ const ManageUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`http://localhost:5000/makeInstructors/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
