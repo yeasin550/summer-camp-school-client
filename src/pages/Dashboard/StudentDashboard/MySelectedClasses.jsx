@@ -64,6 +64,8 @@ const MyEnrolledClasses = () => {
                   key={enrol._id}
                   enrol={enrol}
                   index={index}
+                  setEnrolled={setEnrolled}
+                  enrolled={enrolled}
                 ></MySelectedClassesDetails>
               ))}
 

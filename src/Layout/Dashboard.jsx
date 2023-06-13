@@ -33,12 +33,14 @@ const Dashboard = () => {
           <ul className="menu p-4 w-80 h-full bg-green-400 text-2xl ">
             {/* Sidebar content here */}
 
-            <div className="avatar mx-auto p-3">
-              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={user?.photoURL} />
+            <div className=" mx-auto">
+              <div className="avatar p-3">
+                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src={user?.photoURL} />
+                </div>
               </div>
+              
             </div>
-
             {isAdmin ? (
               <div className="border-2">
                 <li>

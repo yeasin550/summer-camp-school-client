@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 // import React, { useState } from "react";
 // import DayNightToggle from "react-day-and-night-toggle";
@@ -13,7 +13,7 @@ const Navbar = () => {
   
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [theme, setTheme] = useState("light");
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -24,6 +24,20 @@ const Navbar = () => {
       })
       .catch((error) => console.log(error));
   };
+
+useEffect(() => {
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}, [theme]);
+
+const handleTheme = () => {
+  setTheme(theme === "dark" ? "light" : "dark");
+};
+
+
 
   return (
     <nav className="bg-green-200 font-bold">
@@ -120,9 +134,21 @@ const Navbar = () => {
                 )}
               </div>
 
-              <div className="mt-4 cursor-pointer">
-                <FaMoon></FaMoon>
+              <div onClick={handleTheme}>
+                {theme === "dark" ? (
+                  <FaMoon
+                    size={24}
+                    className="text-yellow-500"
+                    title="Light Mode"
+                  />
+                ) : (
+                  <FaMoon size={22} className="text-white" title="Dark Mode" />
+                )}
               </div>
+
+              {/* <div className="mt-4 cursor-pointer">
+                <FaMoon></FaMoon>
+              </div> */}
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">

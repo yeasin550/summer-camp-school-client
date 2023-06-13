@@ -6,7 +6,7 @@ const ManageClasses = () => {
 
   const [approved, setApproved] = useState()
 
-  // const [isPending, setIsPending] = useState(true);
+
   // const [isDenied, setIsDenied] = useState(true);
 
 console.log(approved)
@@ -21,10 +21,7 @@ useEffect(() => {
     });
 }, []);
 
-//  const handleApproved = (_id) => {
-//   console.log(_id)
-//    setIsPending(false);
-//  };
+
 //  const handleDenied = (_id) => {
 //   console.log(_id)
 //    setIsDenied(false);
@@ -34,7 +31,7 @@ useEffect(() => {
     return (
       <div className="w-full ml-8">
         <h1 className=" text-3xl font-semibold ">
-          Total Add Class : {approved.length}
+          Total Add Class : {approved?.length}
         </h1>
         <div className=" w-full overflow-x-auto mt-4">
           <table className="table">
