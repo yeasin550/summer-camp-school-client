@@ -90,16 +90,18 @@ const handleTheme = () => {
                       Classes
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      to="/dashboard"
-                      className={({ isActive }) =>
-                        isActive ? "text-blue-600" : "default"
-                      }
-                    >
-                      Dashboard
-                    </NavLink>
-                  </li>
+                  {user && (
+                    <li>
+                      <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) =>
+                          isActive ? "text-blue-600" : "default"
+                        }
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
