@@ -18,14 +18,11 @@ const ClassesDetails = ({ enrol }) => {
   // console.log(isAdmin)
 
   const navigate = useNavigate();
-  //  const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
-  // console.log(user)
-  // console.log(enrol);
+
   // eslint-disable-next-line react/prop-types
   const { image, name, instructorName, seats, price, _id, availableSeats } =
     enrol;
-  // console.log(sea)
+
 
   const notAvailable = () => {
     Swal.fire({
