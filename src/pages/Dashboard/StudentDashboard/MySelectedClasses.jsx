@@ -30,9 +30,7 @@ const MyEnrolledClasses = () => {
   }, [user]);
 
 
-  // const handleDelete = (_id) => {
-  //     console.log(_id, 'specifif id')
-  //   }
+
 
   return (
     <div>
