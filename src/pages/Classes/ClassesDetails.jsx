@@ -9,18 +9,19 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 
 const ClassesDetails = ({ enrol }) => {
+  // console.log(enrol)
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  
-    const [isInstructor] = useInstructor();
+
+  const [isInstructor] = useInstructor();
 
   // console.log(isAdmin)
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   //  const location = useLocation();
   // const from = location.state?.from?.pathname || "/";
   // console.log(user)
-  console.log(enrol);
+  // console.log(enrol);
   // eslint-disable-next-line react/prop-types
   const { image, name, instructorName, seats, price, _id, availableSeats } =
     enrol;
@@ -40,9 +41,7 @@ const ClassesDetails = ({ enrol }) => {
     // console.log(cartId);
     if (!user) {
       navigate("/login");
-  
-    }
-    else {
+    } else {
       const classItem = {
         cartId,
         instructorName,
@@ -51,7 +50,7 @@ const ClassesDetails = ({ enrol }) => {
         image,
         price,
       };
-      fetch(`http://localhost:5000/carts`, {
+      fetch(`https://summer-camp-school-server-khaki.vercel.app/carts`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -72,14 +71,14 @@ const ClassesDetails = ({ enrol }) => {
         })
       );
     }
-          // navigate("/login");
+    // navigate("/login");
   };
 
   return (
     <div>
       {availableSeats === 0 ? (
         <>
-          <div className=" card-compact w-96 bg-red-400  shadow-xl">
+          <div className=" card-compact w-96 bg-red-400 border-2 border-gray-700 shadow-xl">
             <figure>
               <img className="w-full h-72" src={image} alt="Class Image" />
             </figure>
@@ -101,11 +100,11 @@ const ClassesDetails = ({ enrol }) => {
         </>
       ) : (
         <>
-          <div className=" card-compact w-96 bg-base-100 border-2 border-gray-200 shadow-xl">
+          <div className=" card-compact w-96 bg-base-100 hover:border-gray-700 border-2  shadow-md shadow-orange-300">
             <figure>
               <img className="class-image h-72" src={image} alt="Class Image" />
             </figure>
-            <div className="card-body ">
+            <div className="card-body hover:bg-orange-50">
               <h3 className="text-lg">Name : {name}</h3>
               <p className=" text-lg">InstructorName : {instructorName}</p>
               <p className=" text-lg">AvailableSeats : {availableSeats}</p>

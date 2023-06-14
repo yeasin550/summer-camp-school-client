@@ -6,7 +6,7 @@ const MyEnrolledClasses = () => {
   // const [enrolled, setEnrolled] = useState([])
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/carts")
+  //   fetch("https://summer-camp-school-server-khaki.vercel.app/carts")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);

@@ -9,7 +9,7 @@ const MartialArt = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-10"></div>
-        <div className="hero-content text-right ml-80 text-neutral-content">
+        <div className="hero-content md:text-right lg:ml-80 text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-4xl font-bold">
               Martial Arts School in The City of New York

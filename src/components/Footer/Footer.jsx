@@ -1,27 +1,25 @@
 
 import {
-  FaFacebook,
+  // FaFacebook,
   FaInstagram,
   FaTwitter,
   FaYoutube,
-  FaLinkedin,
-  FaSnapchat,
+  // FaLinkedin,
+  // FaSnapchat,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 pt-12 pb-8 px-4 md:px-10 mt-12">
+    <footer className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 pt-12 pb-8 px-4 md:px-10 mt-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-1">
-          <h2 className="text-white text-lg font-medium mb-4">About Us</h2>
-          <p className="text-gray-400 text-sm leading-loose">
-            Thank you for visiting our recipe website. We hope you enjoyed this
-            recipe and found it useful. If you have any feedback or suggestions,
-            please let us know in the comments below. t forget to follow us
-            on social media and subscribe to our newsletter for more delicious
-            recipes like this one.
-          </p>
+          <img
+            className="w-56 h-40"
+            src="https://i.ibb.co/PWkVHyy/2411-removebg-preview.png"
+            alt=""
+          />
+          <h1 className="text-white font-bold text-2xl ml-9">Martial Art</h1>
         </div>
         <div className="col-span-1">
           <h2 className="text-white text-lg font-medium mb-4">Latest</h2>
@@ -54,59 +52,41 @@ function Footer() {
             info@example.com
           </p>
         </div>
-        <div className="col-span-1  md:justify-end">
-          <h2 className="text-white text-lg font-medium mb-4">Follow Us</h2>{" "}
-          <br />
-          <ul className="flex space-x-4">
-            <li>
-              <a
-                href="#"
-                className="text-blue-500 hover:text-white transition-colors"
-              >
-                <FaFacebook />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-red-400 hover:text-white transition-colors"
-              >
-                <FaInstagram />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-blue-400 hover:text-white transition-colors"
-              >
-                <FaTwitter />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-red-400 hover:text-white transition-colors"
-              >
-                <FaYoutube />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-blue-400 hover:text-white transition-colors"
-              >
-                <FaLinkedin />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-yellow-300 hover:text-white transition-colors"
-              >
-                <FaSnapchat />
-              </a>
-            </li>
-          </ul>
+       
+
+        <div className="flex items-center space-x-4">
+          <a href="#" className="relative group">
+            <div className="h-10 w-10 bg-blue-500 rounded-full flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
+              <svg className="h-6 w-6 text-2xl text-white">
+                <FaTwitter></FaTwitter>
+              </svg>
+            </div>
+            <span className="absolute -left-10 bottom-0 bg-blue-500 text-white text-xs px-1 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Twitter
+            </span>
+          </a>
+
+          <a href="#" className="relative group">
+            <div className="h-10 w-10 bg-red-500  rounded-full flex items-center justify-center transform transition-transform duration-300 hover:rotate-12">
+              <svg className="h-6 w-6 text-2xl text-white">
+                <FaYoutube></FaYoutube>
+              </svg>
+            </div>
+            <span className="absolute bottom-10 left-2 bg-red-500 text-white text-xs px-1 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              YouTube
+            </span>
+          </a>
+
+          <a href="#" className="relative group">
+            <div className="h-10 w-10 bg-green-500 rounded-full flex items-center justify-center transform transition-transform duration-300 hover:scale-110 hover:rotate-12">
+              <svg className="h-6 w-6 text-2xl text-red-700">
+                <FaInstagram></FaInstagram>
+              </svg>
+            </div>
+            <span className="absolute left-10 bottom-0 bg-green-500 text-white text-xs px-1 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Instagram
+            </span>
+          </a>
         </div>
       </div>
       <div className="mt-8 border-t border-gray-700 pt-4">

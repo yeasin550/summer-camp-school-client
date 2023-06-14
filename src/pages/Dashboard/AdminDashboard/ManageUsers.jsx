@@ -9,12 +9,15 @@ const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;
-})
+  });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://summer-camp-school-server-khaki.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -32,14 +35,17 @@ const ManageUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/makeInstructors/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://summer-camp-school-server-khaki.vercel.app/makeInstructors/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-          // refetch();
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",

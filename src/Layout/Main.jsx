@@ -5,7 +5,7 @@ import Footer from "../components/Footer/Footer";
 
 const Main = () => {
   return (
-    <div className="dark">
+    <div className="dark ">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>

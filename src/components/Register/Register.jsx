@@ -32,7 +32,7 @@ const Register = () => {
   //         profile: loggedUser.photoURL,
   //       };
   //       updateUserProfile(loggedUser.name, loggedUser.photoURL);
-  //        fetch("http://localhost:5000/users", {
+  //        fetch("https://summer-camp-school-server-khaki.vercel.app/users", {
   //          method: "POST",
   //          headers: {
   //            "content-type": "application/json",
@@ -70,7 +70,7 @@ const Register = () => {
             role: "student",
             profile: data.photoURL,
           };
-          fetch("http://localhost:5000/users", {
+          fetch("https://summer-camp-school-server-khaki.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -104,7 +104,7 @@ const Register = () => {
   //       const loggedUser = result.user;
   //       console.log(loggedUser)
   //       const saveUser = { name: data.name, email: data.email}
-  //       fetch(`/http://localhost:5000/users`, {
+  //       fetch(`/https://summer-camp-school-server-khaki.vercel.app/users`, {
   //         method: 'POST',
   //         headers: {
   //           'content-type': 'application/json'
@@ -151,7 +151,7 @@ const Register = () => {
                   name="name"
                   type="text"
                   autoComplete="name"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none  border-2 border-double border-red-500 animate-pulse block w-full px-3 py-2  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-xs mt-1">
@@ -178,7 +178,7 @@ const Register = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none  border-2 border-double border-red-600 animate-pulse block w-full px-3 py-2 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs mt-1">
@@ -207,7 +207,7 @@ const Register = () => {
                   name="password"
                   type="password"
                   autoComplete="new-password"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none border-green-700 animate-pulse block w-full px-3 py-2 border-2  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="text-red-500 text-xs mt-1">
@@ -245,7 +245,7 @@ const Register = () => {
                   name="confirmPassword"
                   type="password"
                   autoComplete="new-password"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none border-green-700 animate-pulse block w-full px-3 py-2 border-2  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.confirmPassword &&
                   errors.confirmPassword.type === "required" && (
@@ -278,7 +278,7 @@ const Register = () => {
                   name="photoURL"
                   type="text"
                   autoComplete="off"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none border-double border-orange-500 animate-pulse block w-full px-3 py-2 border-2 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.photoURL && (
                   <p className="text-red-500 text-xs mt-1">

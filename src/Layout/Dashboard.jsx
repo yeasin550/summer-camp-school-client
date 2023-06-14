@@ -8,6 +8,9 @@ import { AuthContext } from "../providers/AuthProvider";
 const Dashboard = () => {
   const {user} = useContext(AuthContext)
 
+
+
+
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
 
@@ -30,18 +33,27 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side ">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4  w-80 h-full bg-green-400 text-2xl ">
+          <ul className="menu p-4 text-gray-200 w-80 h-full bg-gradient-to-r from-emerald-600 to-lime-500 text-2xl ">
             {/* Sidebar content here */}
 
-            <div className=" mx-auto">
-              <div className="avatar p-3">
-                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={user?.photoURL} />
+            <div className="flex flex-wrap animate-bounce border-gradient items-center justify-center gap-3 my-10">
+              <div className="h-24 w-24">
+                <img
+                  className="h-full w-full rounded-full object-cover object-center ring ring-white"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              </div>
+              <div>
+                <div className="text-md font-medium text-secondary-500">
+                  {user?.displayName}
                 </div>
+                <div className="text-sm text-secondary-400">{user?.email}</div>
               </div>
             </div>
+
             {isAdmin ? (
-              <div className="border-2">
+              <div className="border-2 ">
                 <li>
                   <NavLink to="/dashboard/manageClasses">ManageClasses</NavLink>
                 </li>
@@ -61,7 +73,7 @@ const Dashboard = () => {
                 </li>
               </div>
             ) : (
-              <div className="border-2">
+              <div className="border-2 border-orange-500">
                 <li>
                   <NavLink to="/dashboard/mySelectedClasses">
                     MySelectedClasses
@@ -75,12 +87,7 @@ const Dashboard = () => {
               </div>
             )}
 
-            {/* <li>
-              <NavLink to="/dashboard/addNewClass">AddNewClass</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/myClass">My Class</NavLink>
-            </li> */}
+         
             <div className="divider"></div>
             <div className="border-2 text-left">
               <li>

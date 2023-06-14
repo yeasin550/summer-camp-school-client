@@ -3,7 +3,7 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 // import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-// import useCart from "../../../hooks/UseCart";
+import useCart from "../../../hooks/UseCart";
 
 const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
   console.log(approve);
@@ -16,8 +16,8 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
   //   const data = await res.data;
   //   return data;
   // });
-  // const [cart, refetch] = useCart();
-  // console.log(cart);
+  const [cart, refetch] = useCart();
+  console.log(cart);
   const handleApproved = (_id) => {
     console.log(_id);
     // setIsPending(false);
@@ -26,7 +26,7 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
     }).then((data) => {
       console.log(data);
       if (data.data.acknowledged) {
-        // refetch();
+        refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -59,13 +59,16 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
     if (text) {
       console.log(text);
 
-      fetch(`http://localhost:5000/classFeedback/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ feedback: text }),
-      }).then((data) => {
+      fetch(
+        `https://summer-camp-school-server-khaki.vercel.app/classFeedback/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ feedback: text }),
+        }
+      ).then((data) => {
         if (data.data.acknowledged) {
           // refetch();
           Swal.fire(text);
@@ -80,7 +83,7 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12">
+            <div className="mask  w-12 h-12">
               <img src={image} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
@@ -130,4 +133,3 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
 };
 
 export default ManageClassesDetails;
-

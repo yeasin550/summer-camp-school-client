@@ -8,19 +8,23 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import MySelectedClassesDetails from "./MySelectedClassesDetails";
 const MyEnrolledClasses = () => {
   const { user } = useContext(AuthContext);
-
+  const [payments, setPayments] = useState([]);
   const [enrolled, setEnrolled] = useState([]);
   console.log(enrolled);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/carts?email=${user?.email}`, {
-      headers: {
-        authorization: `bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://summer-camp-school-server-khaki.vercel.app/carts?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setPayments(data)
         setEnrolled(data);
       });
   }, [user]);
@@ -35,7 +39,7 @@ const MyEnrolledClasses = () => {
   //       image,
   //       price,
   //     };
-  //     fetch(`http://localhost:5000/carts`, {
+  //     fetch(`https://summer-camp-school-server-khaki.vercel.app/carts`, {
   //       method: "POST",
   //       headers: {
   //         "content-type": "application/json",
@@ -59,13 +63,9 @@ const MyEnrolledClasses = () => {
   //   // navigate("/login");
   // };
 
-
-
-
- // const handleDelete = (_id) => {
+  // const handleDelete = (_id) => {
   //     console.log(_id, 'specifif id')
   //   }
- 
 
   return (
     <div>
@@ -105,6 +105,7 @@ const MyEnrolledClasses = () => {
                   index={index}
                   setEnrolled={setEnrolled}
                   enrolled={enrolled}
+                  setPayments={setPayments}
                 ></MySelectedClassesDetails>
               ))}
 

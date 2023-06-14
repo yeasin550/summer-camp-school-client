@@ -12,7 +12,7 @@ const MyClass = () => {
   console.log(approved);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allClasses")
+    fetch("https://summer-camp-school-server-khaki.vercel.app/allClasses")
       .then((res) => res.json())
       .then((data) => {
         setApproved(data);

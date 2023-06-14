@@ -38,7 +38,7 @@ const AddNewClass = () => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
           const { name, price, instructorName, instructorEmail, seats } = data;
-          console.log(seats)
+          console.log(seats);
           const newClass = {
             name,
             price: parseFloat(price),
@@ -51,7 +51,10 @@ const AddNewClass = () => {
           };
 
           axiosSecure
-            .post("http://localhost:5000/classes", newClass)
+            .post(
+              "https://summer-camp-school-server-khaki.vercel.app/classes",
+              newClass
+            )
             .then((data) => {
               console.log("after posting menu item", data.data);
               if (data.data.insertedId) {
@@ -65,7 +68,7 @@ const AddNewClass = () => {
                 });
               }
             });
-          console.log(newClass);
+          // console.log(newClass);
         }
       });
   };
@@ -83,7 +86,7 @@ const AddNewClass = () => {
           <input
             type="text"
             placeholder="Class name"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full border border-green-700 animate-pulse"
             {...register("name", { required: true, maxLength: 120 })}
           />
         </div>
@@ -106,7 +109,7 @@ const AddNewClass = () => {
               type="text"
               defaultValue={user?.displayName}
               {...register("instructorName", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full border-2 border-purple-500  "
             />
           </div>
           <div className="form-control w-1/2">
@@ -117,7 +120,7 @@ const AddNewClass = () => {
               type="email"
               defaultValue={user?.email}
               {...register("instructorEmail", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full border-2 border-purple-500 "
             />
           </div>
         </div>
@@ -130,7 +133,7 @@ const AddNewClass = () => {
               type="number"
               placeholder="Available Seats"
               {...register("seats", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full border-2 border-double border-red-500 animate-pulse"
             />
           </div>
           <div className="form-control w-1/2">
@@ -141,15 +144,14 @@ const AddNewClass = () => {
               type="number"
               placeholder="Price"
               {...register("price", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full border-2 border-double border-red-500 animate-pulse"
             />
           </div>
         </div>
 
-        <button className="bg-[#835D23] w-full text-center py-2 px-3 flex text-white items-center gap-2 mt-4 rounded-md">
-          Add Item
-          <span>
-            <FaUtensils></FaUtensils>
+        <button className="m-4 p-1 w-full rounded-full from-rose-400 via-fuchsia-500 to-indigo-500 bg-gradient-to-r">
+          <span className="block text-black px-4 py-2 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white transition">
+            Add Class
           </span>
         </button>
       </form>

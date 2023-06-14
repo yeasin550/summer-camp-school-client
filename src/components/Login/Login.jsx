@@ -57,7 +57,7 @@ const showPassword = () => {
               >
                 Email
               </label>
-              <div className="mt-1">
+              <div className="mt-1 animate-bounce">
                 <input
                   {...register("email", {
                     required: "Email is required",
@@ -70,7 +70,7 @@ const showPassword = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none animate-bounce border-orange-500 animate-pulse block w-full px-3 py-2 border-2  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs mt-1">
@@ -103,7 +103,7 @@ const showPassword = () => {
                       name="password"
                       type="text"
                       autoComplete="current-password"
-                      className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="appearance-none border-2 border-green-600 block w-full px-3 py-2 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                     {errors.password && (
                       <p className="text-red-500 text-xs mt-1">
@@ -143,7 +143,7 @@ const showPassword = () => {
                       name="password"
                       type="password"
                       autoComplete="current-password"
-                      className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="appearance-none border-2 border-orange-600 block w-full px-3 py-2  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                     {errors.password && (
                       <p className="text-red-500 text-xs mt-1">

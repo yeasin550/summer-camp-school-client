@@ -35,12 +35,13 @@ useEffect(() => {
 
 const handleTheme = () => {
   setTheme(theme === "dark" ? "light" : "dark");
+  console.log(theme)
 };
 
 
 
   return (
-    <nav className="bg-green-200 font-bold">
+    <nav className="bg-gradient-to-r from-emerald-400 to-lime-600 text-white font-bold">
       {/* <DayNightToggle
         onChange={() => setIsDarkMode(!isDarkMode)}
         checked={isDarkMode}
@@ -48,7 +49,7 @@ const handleTheme = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 animate-pulse">
               <img
                 className="w-24 h-24"
                 src="https://i.ibb.co/PWkVHyy/2411-removebg-preview.png"
@@ -116,8 +117,11 @@ const handleTheme = () => {
                   </Link>
                 ) : (
                   <Link to="/login">
-                    <button className=" mt-3 relative flex items-center justify-center  mr-4 gap-2 px-5 py-2.5  bg-gradient-to-r from-green-500 to-indigo-500 text-white rounded-lg shadow-md transition-all hover:shadow-lg hover:bg-gradient-to-r hover:from-pink-500 hover:to-red-500">
-                      Login
+                    <button className="group relative h-12 w-24 overflow-hidden rounded-lg bg-white text-lg shadow">
+                      <div className="absolute inset-0 w-3 bg-gradient-to-r from-red-500 to-indigo-500 text-white transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                      <span className="relative text-black group-hover:text-white">
+                        Login
+                      </span>
                     </button>
                   </Link>
                 )}
@@ -146,7 +150,7 @@ const handleTheme = () => {
                 )}
               </div>
 
-              {/* <div className="mt-4 cursor-pointer">
+              {/* <div  onClick={handleTheme} className="mt-4 cursor-pointer">
                 <FaMoon></FaMoon>
               </div> */}
             </div>

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-
 import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
@@ -61,7 +60,7 @@ const MyClassDetails = ({ enrol }) => {
         image,
         price,
       };
-      fetch(`http://localhost:5000/carts`, {
+      fetch(`https://summer-camp-school-server-khaki.vercel.app/carts`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

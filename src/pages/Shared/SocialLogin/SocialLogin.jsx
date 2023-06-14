@@ -20,7 +20,7 @@ const SocialLogin = () => {
         profile: loggedInUser.photoURL,
         email: loggedInUser.email,
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://summer-camp-school-server-khaki.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -38,9 +38,16 @@ const SocialLogin = () => {
     <div>
       <div className="divider"></div>
       <div className="w-full text-center my-4">
-        <button
+        {/* <button
           onClick={handleGoogleSignIn}
           className="btn btn-circle btn-outline"
+        >
+          <FaGoogle></FaGoogle>
+        </button> */}
+        <button
+          onClick={handleGoogleSignIn}
+          id="googleplus"
+          className="bg-white transform hover:-translate-y-3 pl-2  border-2 w-12 h-12 rounded-full duration-500 text-red-500 border-red-500 hover:bg-red-500 hover:text-white text-2xl"
         >
           <FaGoogle></FaGoogle>
         </button>
