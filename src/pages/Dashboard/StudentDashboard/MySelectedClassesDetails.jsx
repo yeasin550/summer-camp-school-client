@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
@@ -21,30 +22,29 @@ const MySelectedClassesDetails = ({
 
   const handlePayment = (_id) => {
     console.log(_id);
-      fetch(
-        `https://summer-camp-school-server-khaki.vercel.app/paymentsCard/${_id}`,
-        {
-          method: "PATCH",
-          // headers: {
-          //   "content-type": "application/json",
-          // },
-          // body: JSON.stringify(cartId),
+    fetch(
+      `https://summer-camp-school-server-khaki.vercel.app/paymentsCard/${_id}`,
+      {
+        method: "PATCH",
+        // headers: {
+        //   "content-type": "application/json",
+        // },
+        // body: JSON.stringify(cartId),
+      }
+    ).then((res) =>
+      res.json().then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your successfully select the class",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-      ).then((res) =>
-        res.json().then((data) => {
-          console.log(data);
-          if (data.insertedId) {
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your successfully select the class",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        })
-      );
-
+      })
+    );
   };
 
   const handleDeleteClass = (_id) => {
@@ -65,7 +65,7 @@ const MySelectedClassesDetails = ({
           .then((res) => {
             const data = res.data;
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Toy has been deleted.", "success");
+              Swal.fire("Deleted!", "You class has been deleted.", "success");
               const remaining = enrolled.filter((item) => item._id !== _id);
               setEnrolled(remaining);
             }
@@ -76,8 +76,6 @@ const MySelectedClassesDetails = ({
       }
     });
   };
-
-
 
   return (
     <tr>

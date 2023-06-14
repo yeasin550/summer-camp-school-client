@@ -16,7 +16,7 @@ const PopularClasses = () => {
   return (
     <div>
       <h1 className="text-center font-bold text-4xl my-12">Popular Classes</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:ml-9">
+      <div className="dark dark:text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:ml-9">
         {allClasses.map((enrol) => (
           <ClassesDetails key={enrol._id} enrol={enrol}></ClassesDetails>
         ))}

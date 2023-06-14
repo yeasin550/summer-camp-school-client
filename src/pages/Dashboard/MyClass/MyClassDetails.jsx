@@ -99,14 +99,14 @@ const MyClassDetails = ({ enrol }) => {
               <p className="text-lg">TotalSeats : {seats}</p>
               <p className="text-lg">Price: ${price}</p>
 
-              <div className="text-center">
+              {/* <div className="text-center">
                 <button
                   onClick={notAvailable}
                   className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
                 >
                   Select
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </>
@@ -123,12 +123,18 @@ const MyClassDetails = ({ enrol }) => {
 
               <p className="text-lg ">Price: {price}</p>
               <p className="text-lg ">
-                Status: <span>{status}</span>
+                Status:{" "}
+                <span className="bg-red-500 py-1 px-2 text-white font-bold rounded">
+                  {status}
+                </span>
               </p>
               <p className="text-lg ">
-                Feedback : {feedback ? feedback : "No Feedback"}
+                <span className="bg-green-500 py-1 px-2 rounded font-bold text-white">
+                  Feedback
+                </span>{" "}
+                : {feedback ? feedback : "No Feedback"}
               </p>
-              <div className="text-center ">
+              {/* <div className="text-center ">
                 <button
                   onClick={() => handleSelect(_id)}
                   // className="w-full bg-primary py-2 px-3 rounded text-white font-bold "
@@ -140,7 +146,7 @@ const MyClassDetails = ({ enrol }) => {
                 >
                   Select
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </>

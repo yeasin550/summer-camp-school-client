@@ -1,10 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
-
-// import { FaMoneyCheckAlt, FaTrashAlt } from "react-icons/fa";
-// import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-// import MySelectedClassesDetails from "./MySelectedClassesDetails";
-// import Swal from "sweetalert2";
+
 import MySelectedClassesDetails from "./MySelectedClassesDetails";
 const MyEnrolledClasses = () => {
   const { user } = useContext(AuthContext);
@@ -13,24 +10,23 @@ const MyEnrolledClasses = () => {
   console.log(enrolled);
 
   useEffect(() => {
-    fetch(
-      `https://summer-camp-school-server-khaki.vercel.app/carts?email=${user?.email}`,
-      {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("access-token")}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setPayments(data)
-        setEnrolled(data);
-      });
+    if (user?.email) {
+      fetch(
+        `https://summer-camp-school-server-khaki.vercel.app/carts?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setPayments(data);
+          setEnrolled(data);
+        });
+    }
   }, [user]);
-
-
-
 
   return (
     <div>
@@ -73,8 +69,6 @@ const MyEnrolledClasses = () => {
                   setPayments={setPayments}
                 ></MySelectedClassesDetails>
               ))}
-
-       
           </tbody>
         </table>
       </div>

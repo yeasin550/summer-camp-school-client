@@ -36,7 +36,7 @@ const Dashboard = () => {
           <ul className="menu p-4 text-gray-200 w-80 h-full bg-gradient-to-r from-emerald-600 to-lime-500 text-2xl ">
             {/* Sidebar content here */}
 
-            <div className="flex flex-wrap animate-bounce border-gradient items-center justify-center gap-3 my-10">
+            <div className="flex flex-wrap animate-bounce border-l-2 border-orange-300 border-gradient items-center justify-center gap-3 my-10">
               <div className="h-24 w-24">
                 <img
                   className="h-full w-full rounded-full object-cover object-center ring ring-white"

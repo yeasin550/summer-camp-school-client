@@ -60,9 +60,12 @@ const ManageUsers = () => {
   return (
     <div className="text-lg">
       <div className="overflow-x-auto">
-        <table className="table">
+        <h1 className="text-3xl font-semibold my-5">
+          Total User : {users?.length}
+        </h1>
+        <table className="table ">
           {/* head */}
-          <thead>
+          <thead className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 text-white">
             <tr>
               <th># </th>
               <th>User Image</th>
@@ -70,9 +73,10 @@ const ManageUsers = () => {
               <th>User Name</th>
               <th>Role</th>
               <th className="text-center">Action</th>
+              <th className="text-center">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="">
             {/* row 1 */}
             {users.map((user, index) => (
               <tr key={user._id}>
@@ -80,7 +84,7 @@ const ManageUsers = () => {
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
+                      <div className="mask  w-12 h-12">
                         <img
                           src={user.profile}
                           alt="Avatar Tailwind CSS Component"

@@ -92,7 +92,7 @@ const handleTheme = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/dashboard/addNewClass"
+                      to="/dashboard"
                       className={({ isActive }) =>
                         isActive ? "text-blue-600" : "default"
                       }

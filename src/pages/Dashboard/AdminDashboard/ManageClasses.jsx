@@ -24,13 +24,13 @@ const ManageClasses = () => {
 
   return (
     <div className="w-full ml-8">
-      <h1 className=" text-3xl font-semibold ">
+      <h1 className=" text-3xl my-5 font-semibold ">
         Total Add Class : {approved?.length}
       </h1>
       <div className=" w-full overflow-x-auto mt-4">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className=" bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400 text-black font-bold">
             <tr>
               <th>#</th>
               <th>Image</th>
@@ -53,7 +53,6 @@ const ManageClasses = () => {
                 approved={approved}
               ></ManageClassesDetails>
             ))}
-        
           </tbody>
         </table>
       </div>

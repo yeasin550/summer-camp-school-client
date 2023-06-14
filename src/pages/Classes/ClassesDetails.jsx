@@ -23,7 +23,6 @@ const ClassesDetails = ({ enrol }) => {
   const { image, name, instructorName, seats, price, _id, availableSeats } =
     enrol;
 
-
   const notAvailable = () => {
     Swal.fire({
       position: "top-end",
