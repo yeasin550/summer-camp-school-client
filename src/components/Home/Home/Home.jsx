@@ -12,8 +12,6 @@ const Home = () => {
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
             <MartialArt></MartialArt>
-          
-            
         </div>
     );
 };

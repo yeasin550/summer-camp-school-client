@@ -77,24 +77,7 @@ const MySelectedClassesDetails = ({
     });
   };
 
-  // const handleDelete = (_id) => {
-  //   //   console.log(_id);
-  //   axiosSecure(`https://summer-camp-school-server-khaki.vercel.app/carts/${_id}`, {
-  //     method: "DELETE",
-  //   }).then((data) => {
-  //     console.log(data);
-  //     if (data.data.deletedCount) {
-  //       // refetch();
-  //       Swal.fire({
-  //         position: "top-end",
-  //         icon: "success",
-  //         title: "Your class has been saved",
-  //         showConfirmButton: false,
-  //         timer: 1500,
-  //       });
-  //     }
-  //   });
-  // };
+
 
   return (
     <tr>
