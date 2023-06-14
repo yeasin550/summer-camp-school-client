@@ -28,40 +28,7 @@ const MyEnrolledClasses = () => {
         setEnrolled(data);
       });
   }, [user]);
-  // const enrolledClass = (cartId) => {
-  //   // console.log(enrol);
-  //   if (user) {
-  //     const classItem = {
-  //       cartId,
-  //       instructorName,
-  //       email: user?.email,
-  //       name,
-  //       image,
-  //       price,
-  //     };
-  //     fetch(`https://summer-camp-school-server-khaki.vercel.app/carts`, {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(classItem),
-  //     }).then((res) =>
-  //       res.json().then((data) => {
-  //         console.log(data);
-  //         if (data.insertedId) {
-  //           Swal.fire({
-  //             position: "top-end",
-  //             icon: "success",
-  //             title: "Your successfully select the class",
-  //             showConfirmButton: false,
-  //             timer: 1500,
-  //           });
-  //         }
-  //       })
-  //     );
-  //   }
-  //   // navigate("/login");
-  // };
+
 
   // const handleDelete = (_id) => {
   //     console.log(_id, 'specifif id')
