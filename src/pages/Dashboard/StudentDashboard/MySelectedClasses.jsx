@@ -74,37 +74,7 @@ const MyEnrolledClasses = () => {
                 ></MySelectedClassesDetails>
               ))}
 
-            {/* enrolled.length && */}
-            {/* {enrolled?.map((enrol, index) => (
-              <tr key={enrol._id}>
-                <td className="px-6 py-4 whitespace-no-wrap">{index + 1}</td>
-                <td className="px-6 py-4 whitespace-no-wrap">
-                  <img
-                    src={enrol.image}
-                    alt={enrol.name}
-                    className="h-14 w-14 rounded-md"
-                  />
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap">{enrol.name}</td>
-
-                <td className="px-6 py-4 whitespace-no-wrap">{enrol.email}</td>
-                <td className="px-6 py-4 whitespace-no-wrap">
-                  <button
-                    onClick={() => handleDelete(enrolled._id)}
-                    className="px-4 py-3 mr-2 bg-red-600 hover:bg-red-400 text-white rounded-lg"
-                  >
-                    <FaTrashAlt></FaTrashAlt>
-                  </button>
-                </td>
-                <td>
-                  <Link to="/dashboard/payment">
-                    <button className="px-4 py-3 ml-2 bg-blue-500 text-white rounded-lg">
-                      <FaMoneyCheckAlt></FaMoneyCheckAlt>
-                    </button>
-                  </Link>
-                </td>
-              </tr>
-            ))} */}
+       
           </tbody>
         </table>
       </div>
