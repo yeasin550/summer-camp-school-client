@@ -21,7 +21,7 @@ const Login = () => {
 
 const showPassword = () => {
     setShow(!show);
-    // console.log(show)
+    
 };
 
     
