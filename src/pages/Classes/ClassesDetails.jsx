@@ -7,7 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
-
+// import { motion } from "framer-motion";
 const ClassesDetails = ({ enrol }) => {
   // console.log(enrol)
   const { user } = useContext(AuthContext);
@@ -74,7 +74,16 @@ const ClassesDetails = ({ enrol }) => {
     <div>
       {availableSeats === 0 ? (
         <>
-          <div className=" card-compact w-96 bg-red-400 border-2 border-gray-700 shadow-xl">
+          {/* <
+            initial={{ scale: 0 }}
+            animate={{ rotate: 360, scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
+            className=" card-compact w-96 bg-red-400 border-2 border-gray-700 shadow-xl"
+          > */}
             <figure>
               <img className="w-full h-72" src={image} alt="Class Image" />
             </figure>
@@ -92,11 +101,12 @@ const ClassesDetails = ({ enrol }) => {
                 </button>
               </div>
             </div>
-          </div>
-        </>
+          </>
+        // </>
       ) : (
         <>
-          <div className=" card-compact w-96 bg-base-100 hover:border-gray-700 border-2  shadow-md shadow-orange-300">
+        
+           
             <figure>
               <img className="class-image h-72" src={image} alt="Class Image" />
             </figure>
@@ -119,8 +129,8 @@ const ClassesDetails = ({ enrol }) => {
                 </button>
               </div>
             </div>
-          </div>
-        </>
+          </>
+        // </>
       )}
     </div>
   );

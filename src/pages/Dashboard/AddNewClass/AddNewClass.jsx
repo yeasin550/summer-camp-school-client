@@ -16,7 +16,6 @@ const AddNewClass = () => {
 
   const {
     register,
-
     handleSubmit,
     reset,
     formState: { errors },
@@ -53,8 +52,7 @@ const AddNewClass = () => {
           axiosSecure
             .post(
               "https://summer-camp-school-server-khaki.vercel.app/classes",
-              newClass
-            )
+              newClass)
             .then((data) => {
               console.log("after posting menu item", data.data);
               if (data.data.insertedId) {

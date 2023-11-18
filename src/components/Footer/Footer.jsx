@@ -15,11 +15,11 @@ function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-1">
           <img
-            className="w-56 h-40"
+            className="w-72 h-56"
             src="https://i.ibb.co/PWkVHyy/2411-removebg-preview.png"
             alt=""
           />
-          <h1 className="text-white font-bold text-2xl ml-9">Martial Art</h1>
+         
         </div>
         <div className="col-span-1">
           <h2 className="text-white text-lg font-medium mb-4">Latest</h2>
@@ -35,7 +35,7 @@ function Footer() {
             </li>
             <li>
               <a href="#" className="hover:text-gray-100 transition-colors">
-                Recipe
+                Products
               </a>
             </li>
           </ul>

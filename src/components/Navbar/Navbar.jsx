@@ -14,6 +14,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState("light");
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -93,7 +94,7 @@ const handleTheme = () => {
                   {user && (
                     <li>
                       <NavLink
-                        to="/dashboard"
+                        to="/dashboard/users"
                         className={({ isActive }) =>
                           isActive ? "text-blue-600" : "default"
                         }

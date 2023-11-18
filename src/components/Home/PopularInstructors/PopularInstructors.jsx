@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Fade } from "react-awesome-reveal";
 const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
   useEffect(() => {
@@ -13,9 +13,11 @@ const PopularInstructors = () => {
 
   return (
     <div>
-      <h1 className="text-center my-12 font-bold text-4xl">
-        Popular Instructors
-      </h1>
+      <Fade  delay={1e1} cascade damping={1e-1}>
+        <h1 className="text-center my-12 font-bold text-4xl">
+          Popular Instructors
+        </h1>
+      </Fade>
       <div className="dark dark:text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:ml-9 my-5">
         {instructors.map((instructor) => (
           <div

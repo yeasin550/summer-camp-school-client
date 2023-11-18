@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+// import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 // import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/UseCart";
+// import axios from "axios";
 
 const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
   console.log(approve);
   const { image, instructorEmail, name } = approve;
   // const [isPending, setIsPending] = useState(true);
-  const [isDenied, setIsDenied] = useState(true);
+  // const [isDenied, setIsDenied] = useState(true);
   const [axiosSecure] = useAxiosSecure();
   // const { data: users = [], refetch } = useQuery(["allClasses"], async () => {
   //   const res = await axiosSecure.get("/allClasses");
@@ -41,8 +42,35 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
   };
 
   const handleDenied = (_id) => {
-    console.log(_id);
-    setIsDenied(false);
+    // console.log(_id);
+    // setIsDenied(false);
+
+      Swal.fire({
+        title: "Are you sure want to Denied this?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/allClasses/${_id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              // console.log(data)
+              if (data.deletedCount > 0) {
+                Swal.fire("Deleted!", "Class has been denied.", "success");
+                const remaining = approved.filter((item) => item._id !== _id);
+                setApproved(remaining);
+              }
+            });
+        }
+      });
+          
+       
   };
 
   const handleFeedback = async (_id) => {
@@ -106,18 +134,18 @@ const ManageClassesDetails = ({ approve, index, setApproved, approved }) => {
         )}
       </td>
       <td>
-        {isDenied ? (
+        {/* {isDenied ? ( */}
           <button
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => handleDenied(approve._id)}
           >
             Denied
           </button>
-        ) : (
+        {/* ) : (
           <button className="bg-red-300 text-white font-bold py-2 px-4 rounded">
             Deny
           </button>
-        )}
+        )} */}
       </td>
 
       <td>

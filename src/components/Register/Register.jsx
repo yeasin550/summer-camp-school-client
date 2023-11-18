@@ -20,42 +20,7 @@ const Register = () => {
     reset,
   } = useForm();
 
-  // const handleGoogleSignIn = () => {
-  //   googleSignIn()
-  //     .then((result) => {
-  //       const loggedUser = result.user;
-  //       console.log(loggedUser);
-  //       const saveUser = {
-  //         name: loggedUser.displayName,
-  //         email: loggedUser.email,
-  //         role: "student",
-  //         profile: loggedUser.photoURL,
-  //       };
-  //       updateUserProfile(loggedUser.name, loggedUser.photoURL);
-  //        fetch("https://summer-camp-school-server-khaki.vercel.app/users", {
-  //          method: "POST",
-  //          headers: {
-  //            "content-type": "application/json",
-  //          },
-  //          body: JSON.stringify(saveUser),
-  //        })
-  //          .then((res) => res.json())
-  //          .then((data) => {
-  //            if (data.insertedId) {
-  //              reset();
-  //              Swal.fire("Good job!", "Login successfully", "success");
 
-  //               navigate(from, { replace: true });
-  //            }
-  //          });
-
-  //       // Swal.fire("Good job!", "Login successfully", "success");
-
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
