@@ -6,7 +6,7 @@ import OurKeyFeatures from "../OurKeyFeatures/OurKeyFeatures";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import Pricing from "../Pricing/Pricing";
-// import SchoolBenefits from "../SchoolBenefits/SchoolBenefits";
+import SchoolBenefits from "../SchoolBenefits/SchoolBenefits";
 
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
             <PopularInstructors></PopularInstructors>
             <MartialArt></MartialArt>
             <ImproveSkills />
-            {/* <SchoolBenefits/> */}
+            <SchoolBenefits/>
             <OurKeyFeatures/>
             <Pricing/>
             <Contact/>
