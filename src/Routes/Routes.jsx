@@ -17,7 +17,7 @@ import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
 import ManageUsers from "../pages/Dashboard/AdminDashboard/ManageUsers";
 
 import ManageClasses from "../pages/Dashboard/AdminDashboard/ManageClasses";
-import PrivateRoute from "./PrivateRoute";
+// import PrivateRoute from "./PrivateRoute";
 import Users from "../pages/Dashboard/Users/Users";
 
 
@@ -55,9 +55,9 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: (
-      <PrivateRoute>
+      // <PrivateRoute>
         <Dashboard></Dashboard>
-      </PrivateRoute>
+      // </PrivateRoute>
     ),
     children: [
       // adminRoute
