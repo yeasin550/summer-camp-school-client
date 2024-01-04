@@ -1,5 +1,6 @@
 import Banner from "../Banner/Banner";
 import Contact from "../Contact/Contact";
+import FreePass from "../FreePass/FreePass";
 import ImproveSkills from "../ImproveSkills/ImproveSkills";
 import MartialArt from "../MartialArt/MartialArt";
 import OurKeyFeatures from "../OurKeyFeatures/OurKeyFeatures";
@@ -17,7 +18,8 @@ const Home = () => {
             <PopularInstructors></PopularInstructors>
             <MartialArt></MartialArt>
             <ImproveSkills />
-            <SchoolBenefits/>
+            <SchoolBenefits />
+            <FreePass/>
             <OurKeyFeatures/>
             <Pricing/>
             <Contact/>
