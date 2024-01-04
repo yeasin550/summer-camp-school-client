@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import Contact from "../Contact/Contact";
 import MartialArt from "../MartialArt/MartialArt";
 import OurKeyFeatures from "../OurKeyFeatures/OurKeyFeatures";
 import PopularClasses from "../PopularClasses/PopularClasses";
@@ -15,6 +16,7 @@ const Home = () => {
             <MartialArt></MartialArt>
             <OurKeyFeatures/>
             <Pricing/>
+            <Contact/>
         </div>
     );
 };

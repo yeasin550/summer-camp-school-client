@@ -1,316 +1,334 @@
+/* eslint-disable react/no-unknown-property */
 
 const Pricing = () => {
     return (
       <div>
-        <section className="py-6 leading-7 text-gray-900 bg-white sm:py-12 md:py-16">
-          <div className="box-border px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-0 max-w-7xl">
-            <div className="flex flex-col items-center leading-7 text-center text-gray-900 border-0 border-gray-200">
-              <h2
-                id="pricing"
-                className="box-border m-0 text-3xl font-semibold leading-tight tracking-tight text-black border-solid sm:text-3xl md:text-4xl"
-              >
-                Simple, Transparent Pricing
+        <section className="bg-white dark:bg-gray-900">
+          <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
+            <div className="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
+              <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                Pay once, use forever.
               </h2>
-              <p className="box-border mt-2 text-xl text-gray-900 border-solid sm:text-2xl"></p>
+              <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                Here at Landwind we focus on markets where technology,
+                innovation, and capital can unlock long-term value and drive
+                economic growth.
+              </p>
             </div>
-            <div
-              id="pricing"
-              className="grid grid-cols-1 gap-4 mt-4 leading-7 text-gray-900 border-0 border-gray-200 sm:mt-6 sm:gap-6 md:mt-8 md:gap-0 lg:grid-cols-3"
-            >
-              {/* Price 1 */}
-              <div className="relative z-10 flex flex-col items-center max-w-md p-4 mx-auto my-0 border border-solid rounded-lg lg:-mr-3 sm:my-0 sm:p-6 md:my-8 md:p-8">
-                <h3 className="m-0 text-2xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-2xl md:text-3xl">
-                  Starter
-                </h3>
-                <div className="flex items-end mt-6 leading-7 text-gray-900 border-0 border-gray-200">
-                  <p className="box-border m-0 text-4xl font-semibold leading-none border-solid">
-                    $1
-                  </p>
-                  <p
-                    className="box-border m-0 border-solid"
-                    style={{ borderImage: "initial" }}
-                  >
-                    / month
-                  </p>
+            <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+              <div className="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <h3 className="mb-4 text-2xl font-semibold">Free</h3>
+                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                  Best option for personal use &amp; for your next project.
+                </p>
+                <div className="flex items-baseline justify-center my-8">
+                  <span className="mr-2 text-4xl font-extrabold">$00</span>
+                  <span className="text-gray-500 dark:text-gray-400">
+                    /month
+                  </span>
                 </div>
-                <ul className="flex-1 p-0 mt-4 ml-5 leading-7 text-gray-900 border-0 border-gray-200">
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                <ul role="list" className="mb-8 space-y-4 text-left">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    1 Website
+                    <span>Individual configuration</span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    SSL (HTTPS)
+                    <span>No setup, or hidden fees</span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    SiteFast Domain
+                    <span>
+                      Team size:{" "}
+                      <span className="font-semibold">1 developer</span>
+                    </span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <svg
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span>
+                      Premium support:{" "}
+                      <span className="font-semibold">6 months</span>
+                    </span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <svg
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span>
+                      Free updates:{" "}
+                      <span className="font-semibold">6 months</span>
+                    </span>
                   </li>
                 </ul>
                 <a
                   href="#"
-                  className="inline-flex justify-center w-full px-4 py-3 mt-8 font-sans text-sm leading-none text-center text-blue-600 no-underline bg-transparent border border-blue-600 rounded-md cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+                  className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-purple-900"
                 >
-                  Start Now
+                  Get started
                 </a>
               </div>
-              {/* Price 2 */}
-              <div className="relative z-20 flex flex-col items-center max-w-md p-4 mx-auto my-0 bg-white border-4 border-blue-600 border-solid rounded-lg sm:p-6 md:px-8 md:py-16">
-                <h3 className="m-0 text-2xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-2xl md:text-3xl">
-                  Basic
-                </h3>
-                <div className="flex items-end mt-6 leading-7 text-gray-900 border-0 border-gray-200">
-                  <p className="box-border m-0 text-4xl font-semibold leading-none border-solid">
-                    $29
-                  </p>
-                  <p
-                    className="box-border m-0 border-solid"
-                    style={{ borderImage: "initial" }}
+              <div className="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow  dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
+                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                  Relevant for multiple users, extended &amp; premium support.
+                </p>
+                <div className="flex items-baseline justify-center my-8">
+                  <span className="mr-2 text-4xl font-extrabold">$99</span>
+                  <span
+                    className="text-gray-500 dark:text-gray-400"
+                    dark:text-gray-400=""
                   >
-                    / month
-                  </p>
+                    /month
+                  </span>
                 </div>
-                <ul className="flex-1 p-0 mt-4 ml-5 leading-7 text-gray-900 border-0 border-gray-200">
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                <ul role="list" className="mb-8 space-y-4 text-left">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    15 Websites
+                    <span>Individual configuration</span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    SSL (HTTPS)
+                    <span>No setup, or hidden fees</span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    Custom Domain
+                    <span>
+                      Team size:{" "}
+                      <span className="font-semibold">10 developers</span>
+                    </span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    SiteFast Branding Removal
+                    <span>
+                      Premium support:{" "}
+                      <span className="font-semibold">24 months</span>
+                    </span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <svg
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span>
+                      Free updates:{" "}
+                      <span className="font-semibold">24 months</span>
+                    </span>
                   </li>
                 </ul>
                 <a
                   href="#"
-                  className="inline-flex justify-center w-full px-4 py-3 mt-8 font-sans text-sm leading-none text-center text-white no-underline bg-blue-600 border rounded-md cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+                  className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-purple-900"
                 >
-                  Start Now
+                  Get started
                 </a>
               </div>
-              {/* Price 3 */}
-              <div className="relative z-10 flex flex-col items-center max-w-md p-4 mx-auto my-0 border border-solid rounded-lg lg:-ml-3 sm:my-0 sm:p-6 md:my-8 md:p-8">
-                <h3 className="m-0 text-2xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-2xl md:text-3xl">
-                  Plus
-                </h3>
-                <div className="flex items-end mt-6 leading-7 text-gray-900 border-0 border-gray-200">
-                  <p className="box-border m-0 text-4xl font-semibold leading-none border-solid">
-                    $49
-                  </p>
-                  <p
-                    className="box-border m-0 border-solid"
-                    style={{ borderImage: "initial" }}
-                  >
-                    / month
-                  </p>
+              <div className="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <h3 className="mb-4 text-2xl font-semibold">Plus</h3>
+                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                  Best for large scale uses and extended redistribution rights.
+                </p>
+                <div className="flex items-baseline justify-center my-8">
+                  <span className="mr-2 text-4xl font-extrabold">$499</span>
+                  <span className="text-gray-500 dark:text-gray-400">
+                    /month
+                  </span>
                 </div>
-                <ul className="flex-1 p-0 mt-4 leading-7 text-gray-900 border-0 border-gray-200">
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                <ul role="list" className="mb-8 space-y-4 text-left">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    50 Websites
+                    <span>Individual configuration</span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    SSL (HTTPS)
+                    <span>No setup, or hidden fees</span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    Custom Domain
+                    <span>
+                      Team size:{" "}
+                      <span className="font-semibold">100+ developers</span>
+                    </span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    SiteFast Branding Removal
+                    <span>
+                      Premium support:{" "}
+                      <span className="font-semibold">36 months</span>
+                    </span>
                   </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
+                  <li className="flex items-center space-x-3">
                     <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-                    Google Analytics
-                  </li>
-                  <li className="inline-flex items-center block w-full mb-2 ml-5 font-semibold text-left border-solid">
-                    <svg
-                      className="w-5 h-5 mr-2 font-semibold leading-7 text-blue-600 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      ></path>
-                    </svg>
-                    Email Integration
+                    <span>
+                      Free updates:{" "}
+                      <span className="font-semibold">36 months</span>
+                    </span>
                   </li>
                 </ul>
                 <a
                   href="#"
-                  className="inline-flex justify-center w-full px-4 py-3 mt-8 font-sans text-sm leading-none text-center text-blue-600 no-underline bg-transparent border border-blue-600 rounded-md cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+                  className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-purple-900"
                 >
-                  Start Now
+                  Get started
                 </a>
               </div>
             </div>

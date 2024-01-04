@@ -1,11 +1,11 @@
 const OurKeyFeatures = () => {
   return (
     <div>
-      <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:pt-24 lg:px-8">
+      <div className="max-w-7xl mx-auto  px-4 sm:px-4 lg:pt-24 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           Our service statistics
         </h2>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-4 mt-4">
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 mt-4">
           <div className="bg-white overflow-hidden shadow hover:shadow-lg sm:rounded-lg">
             <div className="px-4 py-5 sm:p-6 border border-gray-600 rounded-lg">
               <dl>
@@ -56,10 +56,28 @@ const OurKeyFeatures = () => {
           </div>
         </div>
       </div>
+      <div className="grid grid-cols-2 gap-4 px-4 lg:mx-8 mt-6 sm:grid-cols-4 sm:px-8">
+        <div className="bg-white border border-gray-600 hover:shadow-lg rounded-lg overflow-hidden shadow px-4 py-6 ">
+          <h3 className="tracking-wider">Total Free Member</h3>
+          <p className="text-2xl text-[#4F46E5]">12,768</p>
+        </div>
+        <div className="bg-white border border-gray-600 hover:shadow-lg rounded-lg overflow-hidden shadow px-4 py-6 ">
+          <h3 className="tracking-wider">Total Post</h3>
+          <p className="text-2xl text-[#4F46E5]">39,265</p>
+        </div>
+        <div className="bg-white border border-gray-600 hover:shadow-lg rounded-lg overflow-hidden shadow px-4 py-6 ">
+          <h3 className="tracking-wider">Total Comment</h3>
+          <p className="text-2xl text-[#4F46E5]">142,334</p>
+        </div>
+        <div className="bg-white border border-gray-600 hover:shadow-lg rounded-lg overflow-hidden shadow px-4 py-6 ">
+          <h3 className="tracking-wider">Server Load</h3>
+          <p className="text-2xl text-[#4F46E5]">34.12%</p>
+        </div>
+      </div>
       <section className="text-gray-700 body-font my-5">
-        <div className="container px-5 mx-auto">
-          <div className="flex flex-wrap text-center">
-            <div className="p-2 md:w-1/4 sm:w-1/2 w-full">
+        <div className="container lg:px-6 px-2 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-center">
+            <div className="p-2 w-full">
               <div className="border border-gray-600 px-4 py-3 rounded-lg transform transition duration-500 hover:scale-110">
                 <svg
                   fill="none"
@@ -79,7 +97,7 @@ const OurKeyFeatures = () => {
                 <p className="leading-relaxed">Downloads</p>
               </div>
             </div>
-            <div className="p-2 md:w-1/4 sm:w-1/2 w-full">
+            <div className="p-2 w-full">
               <div className="border border-gray-600 px-4 py-3 rounded-lg transform transition duration-500 hover:scale-110">
                 <svg
                   fill="none"
@@ -100,7 +118,7 @@ const OurKeyFeatures = () => {
                 <p className="leading-relaxed">Users</p>
               </div>
             </div>
-            <div className="p-2 md:w-1/4 sm:w-1/2 w-full">
+            <div className="p-2 w-full">
               <div className="border border-gray-600 px-4 py-3 rounded-lg transform transition duration-500 hover:scale-110">
                 <svg
                   fill="none"
@@ -120,7 +138,7 @@ const OurKeyFeatures = () => {
                 <p className="leading-relaxed">Files</p>
               </div>
             </div>
-            <div className="p-2 md:w-1/4 sm:w-1/2 w-full">
+            <div className="p-2 w-full">
               <div className="border border-gray-600 px-4 py-3 rounded-lg transform transition duration-500 hover:scale-110">
                 <svg
                   fill="none"
@@ -142,24 +160,6 @@ const OurKeyFeatures = () => {
           </div>
         </div>
       </section>
-      <div className="grid grid-cols-1 gap-4 px-4 mx-8 mt-6 sm:grid-cols-4 sm:px-8">
-        <div className=" bg-white border rounded-lg overflow-hidden shadow px-4 py-6 ">
-          <h3 className="text-sm tracking-wider">Total Member</h3>
-          <p className="text-3xl">12,768</p>
-        </div>
-        <div className="bg-white border rounded-lg overflow-hidden shadow px-4 py-6 ">
-          <h3 className="text-sm tracking-wider">Total Post</h3>
-          <p className="text-3xl">39,265</p>
-        </div>
-        <div className="bg-white border rounded-lg overflow-hidden shadow px-4 py-6 ">
-          <h3 className="text-sm tracking-wider">Total Comment</h3>
-          <p className="text-3xl">142,334</p>
-        </div>
-        <div className="bg-white border rounded-lg overflow-hidden shadow px-4 py-6 ">
-          <h3 className="text-sm tracking-wider">Server Load</h3>
-          <p className="text-3xl">34.12%</p>
-        </div>
-      </div>
     </div>
   );
 };
