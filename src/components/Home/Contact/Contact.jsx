@@ -5,7 +5,7 @@ const Contact = () => {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mb-4">
             <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
-              <p className="text-9xl opacity-10 font-semibold uppercase tracking-wide text-blue-600 dark:text-gray-200">
+              <p className="lg:text-9xl opacity-10 font-semibold uppercase tracking-wide text-blue-600 dark:text-gray-200">
                 Contact
               </p>
               <h2 className="font-heading mb-4 font-bold tracking-tight -mt-20 text-gray-900 dark:text-white text-3xl sm:text-5xl">
@@ -79,10 +79,10 @@ const Contact = () => {
                         Contact
                       </h3>
                       <p className="text-gray-600 dark:text-slate-400">
-                        Mobile: +1 (123) 456-7890
+                        Mobile: +880 1927048579 (BD)
                       </p>
                       <p className="text-gray-600 dark:text-slate-400">
-                        Mail: tailnext@gmail.com
+                        Email: yeasin51570@gmail.com
                       </p>
                     </div>
                   </li>

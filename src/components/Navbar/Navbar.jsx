@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { MdSportsMartialArts } from "react-icons/md";
 const Navbar = () => {
   // dark mode
   //  const [isDarkMode, setIsDarkMode] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-emerald-400 to-lime-600 text-white font-bold lg:pl-12">
+    <nav className="bg-gradient-to-r from-emerald-400 to-lime-600 text-white sticky top-0 left-0 z-50 font-bold lg:pl-12">
       {/* <DayNightToggle
         onChange={() => setIsDarkMode(!isDarkMode)}
         checked={isDarkMode}
@@ -44,8 +45,7 @@ const Navbar = () => {
         <div className="flex items-center lg:space-x-64">
           {/* div-1  */}
           <div className="text-xl w-16">
-            <img src="https://img.freepik.com/free-vector/flat-design-ninja-logo-template_23-2149017450.jpg?w=740&t=st=1704301091~exp=1704301691~hmac=66cae2aa343fcdca0cbe48d526b5452d94816920ccb172d1d15dbcf1409cff19" />
-            {/* <h1>Martial Art</h1> */}
+            <MdSportsMartialArts className="text-[50px] text-black" />
           </div>
           {/* div-2 */}
           <div className="hidden md:block items-baseline space-x-4 menu menu-horizontal px-1">

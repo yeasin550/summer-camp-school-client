@@ -8,17 +8,14 @@ import {
   // FaSnapchat,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { MdSportsMartialArts } from "react-icons/md";
 
 function Footer() {
   return (
     <footer className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 pt-12 pb-8 px-4 md:px-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div className="col-span-1">
-          <img
-            className="w-72 h-56"
-            src="https://img.freepik.com/free-vector/flat-design-taekwondo-logo-design_23-2149621550.jpg?w=740&t=st=1704362444~exp=1704363044~hmac=29bf6864d39763cdb5636f60b9a419417f35f6211e6c8c5b910e1d072943fc10"
-            alt=""
-          />
+        <div className="col-span-1 w-44 mx-auto">
+          <MdSportsMartialArts  className="text-[200px] text-orange-500"/>
         </div>
         <div className="col-span-1">
           <h2 className="text-white text-lg font-medium mb-4">Latest</h2>
