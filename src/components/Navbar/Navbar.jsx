@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-emerald-400 to-lime-600 text-white sticky top-0 left-0 z-50 font-bold lg:pl-12">
+    <nav className="bg-white dark:text-black sticky top-0 left-0 z-50 font-bold lg:pl-12 shadow-md">
       {/* <DayNightToggle
         onChange={() => setIsDarkMode(!isDarkMode)}
         checked={isDarkMode}
@@ -138,7 +138,7 @@ const Navbar = () => {
                   title="Light Mode"
                 />
               ) : (
-                <FaMoon size={22} className="text-white" title="Dark Mode" />
+                <FaMoon size={22} className="text-black" title="Dark Mode" />
               )}
             </div>
           </div>
